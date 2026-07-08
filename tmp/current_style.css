@@ -1,0 +1,57 @@
+﻿:root{
+  --bg1: #fff0e6; /* soft peach */
+  --bg2: #f0fff7; /* mint-cream */
+  --card: rgba(255,255,255,0.85);
+  --muted: #6b6b6b;
+  --accent: #ff9aa2;
+  --accent-2: #9be7c4;
+  --glass-border: rgba(11,10,8,0.06);
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);color:#2b2b2b}
+
+.container{max-width:980px;margin:0 auto;padding:36px}
+
+/* Watermark centrally fixed */
+.watermark{position:fixed;left:50%;top:45%;transform:translate(-50%,-50%);font-weight:800;opacity:0.04;font-size:25rem;color:#000;z-index:-1;pointer-events:none}
+
+/* Hero */
+.hero{padding:28px 0}
+.hero-inner{display:flex;align-items:center;justify-content:center}
+.hero-copy{text-align:center}
+.big-title{font-family:'Dancing Script',cursive;font-size:84px;margin:6px 0;color:#263238}
+.eyebrow{font-size:14px;color:var(--muted);margin:0 0 6px}
+.hero h1{font-family:'Dancing Script',cursive;font-size:44px;margin:6px 0}
+.lead{color:var(--muted);margin:0 0 18px}
+.cta, .cta:focus, .cta:hover{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer}
+
+/* Step cards */
+.step{background:transparent;padding:0;margin:30px 0;display:none;transform-origin:center}
+.step.active{display:block}
+
+.content-card{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 8px 24px rgba(38,38,38,0.06);border:1px solid var(--glass-border);max-width:960px;margin:16px auto}
+
+/* Media styles per spec */
+.journey-media, .letter-portrait{max-width:960px;width:100%;height:auto;border-radius:12px;display:block;margin:6px auto;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+
+.journey-media{object-fit:cover}
+
+.controls{display:flex;justify-content:center;margin-top:12px}
+.next-btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:10px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer}
+
+/* Apology and letter */
+.letter{padding:12px;color:var(--muted);line-height:1.6}
+
+/* Animations */
+.anim-in{animation:cardIn 520ms cubic-bezier(.2,.9,.3,1)}
+.anim-out{animation:cardOut 420ms cubic-bezier(.2,.9,.3,1)}
+@keyframes cardIn{0%{opacity:0;transform:translateY(10px) scale(.98)}50%{transform:translateY(-6px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes cardOut{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-12px) scale(.98)}}
+
+/* Small screens */
+@media (max-width:640px){
+  .watermark{display:none}
+  .hero h1{font-size:36px}
+}
+

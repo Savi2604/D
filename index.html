@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Ammu — From Savitha</title>
+    <meta name="description" content="A deeply personal birthday surprise for Devanandh (Ammu)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="particle-layer" aria-hidden="true"></div>
+    <div class="watermark">DS</div>
+
+    <div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+      <div class="lock-card">
+        <p class="lock-eyebrow">Secret Access</p>
+        <h1 id="lock-title">Enter our secret milestone date to unlock your birthday surprise 🔐</h1>
+        <label class="lock-field" for="secret-key">
+          <span class="sr-only">Secret key</span>
+          <input id="secret-key" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="DD-MM-YYYY" />
+        </label>
+        <button id="unlock-button" type="button">Unlock ✨</button>
+        <p id="lock-error" class="lock-error" role="alert"></p>
+      </div>
+    </div>
+
+    <main class="page-shell">
+      <section class="hero-panel" id="hero-panel">
+        <div class="hero-card">
+          <div class="hero-copy">
+            <p class="eyebrow">A soft surprise for my Ammu</p>
+            <h1>Happy Birthday Ammu 🧡🤗</h1>
+            <p class="hero-text">Savitha: A dreamy love journey, each memory a small light for you.</p>
+            <button class="hero-button" type="button">Open the journey</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-stage" id="journey-stage" aria-live="polite">
+        <article class="journey-step is-active" id="step-1">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/school_days.jpg" alt="School spark" class="journey-media" />
+            </div>
+            <div class="card-copy">
+              <p class="eyebrow">Our School Bench Spark ✨</p>
+              <h2>School Bench Spark</h2>
+              <p>School days-la unna muthal muthala paathadhu, appo arambicha namma conversations... Gnabagam iruka Ammu, enoda class pakathu class thaan unaku. Break-la nee pogum pothum varum pothum nambala yarukuமே theriyama sight adipome! Ithula enaku appo theriyaathu, nee enna avlo sight adipanu apram thaan therinjithu.</p>
+              <button class="next-button" data-target="step-2">Next Memory ✨ ➡️</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="journey-step" id="step-2">
+          <div class="progress-card reverse">
+            <div class="card-copy">
+              <p class="eyebrow">The Revision Exam & Cake Cutting 🎂</p>
+              <h2>Revision Day & Cake</h2>
+              <p>Namma last public exam revision apo, nee enaku exact-ah opposite-la thaan irundha. Nambala apdiye maari maari paathute irundhom, suthama padikave ila gnabagam iruka? Apram public exam mudunja last day, namma veetuku cake vetta vandheenga... Apo thaan first time naan un pakathula ninnu photo eduthen. Andha cake-la 'D' pakathula 'S' nu ezhudhuna andha sweet memories ennaikuமே marakka mudiyathu da.</p>
+              <button class="next-button" data-target="step-3">Next Memory ✨ ➡️</button>
+            </div>
+            <div class="card-media">
+              <img src="assets/anniversary.jpg" alt="Cake cutting memory" class="journey-media" />
+            </div>
+          </div>
+        </article>
+
+        <article class="journey-step" id="step-3">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/reconnect.jpg" alt="Melody touch and first hug" class="journey-media" />
+            </div>
+            <div class="card-copy">
+              <p class="eyebrow">The Melody Touch & Our First Hug ❤️</p>
+              <h2>Melody & That First Hug</h2>
+              <p>Oru naal en kaga nee bus-la last-aa eranguna... Apo thaan first time nee en kaiya touch panni, andha sweet-ana Melody chocolate vangi kudutha! And namma first hug... En birthday appo namma temple-ku poirundhom, namma appa kooda vandhum nambala mattum தனியா poirundhapo anga nee enaku oru keychain thandhu, unna mudhal time naan hug pannen! Absolute best day of my life.</p>
+              <button class="next-button" data-target="step-4">Next Memory ✨ ➡️</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="journey-step" id="step-4">
+          <div class="progress-card reverse accent-card">
+            <div class="card-copy">
+              <p class="eyebrow">Mother-Love Proclamation 💞</p>
+              <h2>For Your Amma</h2>
+              <p>Unga Amma-ku apram, unna intha ulagathula yaaruku romba pudikumna adhu enaku thaan! 🫂✨</p>
+              <button class="next-button" data-target="step-5">Next Memory ✨ ➡️</button>
+            </div>
+            <div class="card-media">
+              <img src="assets/bond_accent.jpg" alt="Bond accent" class="journey-media" />
+            </div>
+          </div>
+        </article>
+
+        <article class="journey-step" id="step-5">
+          <div class="apology-card">
+            <div class="apology-copy">
+              <p class="eyebrow">The Intense Deep Apology Card Component</p>
+              <h2>Romba Sorry... 🥺💔😔</h2>
+              <p>Naan unna romba kasta paduthirukan Ammu.. athuku oru vaarthaiyla 'Sorry' nu sonna kandipaa mudiyathu nu enaku theriyum. Nambala podatha sandaiye illa, apo namakula avlo problems lines vandhuchu, ipo irukra maari apo avlo understanding illa... En mela unaku kovam irundhalum, en anbu eppovume un kooda thaan irukum. Enna panrathu nu puriyama thaan intha chinna muyarchi.</p>
+              <button class="promise-button" id="promise-button" type="button">Read My Lifelong Promise ❤️</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="final-note-view" id="final-note-view" aria-live="polite">
+        <div class="final-note-card">
+          <div class="portrait-reveal-box" id="portrait-reveal-box">
+            <div class="portrait-glow"></div>
+            <img src="assets/fav_portrait.jpg" alt="Favorite portrait" class="letter-portrait" />
+            <div class="portrait-overlay">Tap to unlock our favorite frame 🔑✨</div>
+          </div>
+
+          <div class="caption-block" role="note">
+            <p>Enku yen nu thrla Antha pic enku avlo pudikum..i love this! Every time I see, I fall in love with you... ❤️✨ Indha pic-ah paarkum bodhu yellam en manasula oru thonum da Ammu... Enna prachana nambala suthu irundhalum, un pakathula irukum podhu mattum thaan naan romba safe-ah, happy-ah iruken. Un mela naan vechiruka anbu eppovume koraiyadhu... 🫂</p>
+          </div>
+
+          <div class="letter-body">
+            <p class="letter-body-text">Devanandh, unna enaku evlo pudikumnu enake solla theriyala da. Namma lovers-ah pesunadhum, naduvula pesama gap vizhundhadhum, ippo thirumba pesi successfully 1 year aagura indha payanamum... en vaazhkai laiye naan vaazhndha romba unmaiyana, azhagana phase.
+
+Arambathula nee enna 'D' nu kupda kita thatta 2 varusham aairuchii... aana ipo nee eppovume frequent-aa apdithan kupidra. Andha 'D' nu solum bothu its a kind of feelings athu yarutaum enku vanthathu ila but aana unta matum varuthu yen nu thrla..what ever 
+I will always there for you..!!
+love You Always Ammu..!! ❤️⏳</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
