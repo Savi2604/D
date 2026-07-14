@@ -1,14 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday Ammu — From Savitha</title>
+    <title>Happy Birthday Ammu</title>
     <meta name="description" content="A deeply personal birthday surprise for Devanandh (Ammu)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Preload bg music for instant play on final screen -->
+    <link rel="preload" href="assets/neeyum_naanum.mp3" as="audio" type="audio/mpeg" />
   </head>
   <body>
     <div id="particle-layer" aria-hidden="true"></div>
@@ -33,7 +35,7 @@
           <div class="hero-copy">
             <p class="eyebrow">A soft surprise for my Ammu</p>
             <h1>Happy Birthday Ammu 🧡🤗</h1>
-            <p class="hero-text">Savitha: A dreamy love journey, each memory a small light for you.</p>
+            <p class="hero-text">A dreamy love journey, each memory a small light for you.</p>
             <button class="hero-button" type="button">Open the journey</button>
           </div>
         </div>
@@ -48,7 +50,7 @@
             <div class="card-copy">
               <p class="eyebrow">Our School Bench Spark ✨</p>
               <h2>School Bench Spark</h2>
-              <p>School days-la unna muthal muthala paathadhu, appo arambicha namma conversations... Gnabagam iruka Ammu, enoda class pakathu class thaan unaku. Break-la nee pogum pothum varum pothum nambala yarukuமே theriyama sight adipome! Ithula enaku appo theriyaathu, nee enna avlo sight adipanu apram thaan therinjithu.</p>
+              <p>School days-la unna First Time paathadhu, appo arambicha namma conversations... Gnabagam iruka Ammu, enoda class pakathu class thaan unaku. Break-la naa pogum pothum varum pothum Papan una aana ne ena pakaraya ilaya nu enkea Theriyathu and then namba pakrom nu yarukumea  theriyathu apdii sight adipome! rendu perum....</p>
               <button class="next-button" data-target="step-2">Next Memory ✨ ➡️</button>
             </div>
           </div>
@@ -59,7 +61,7 @@
             <div class="card-copy">
               <p class="eyebrow">The Revision Exam & Cake Cutting 🎂</p>
               <h2>Revision Day & Cake</h2>
-              <p>Namma last public exam revision apo, nee enaku exact-ah opposite-la thaan irundha. Nambala apdiye maari maari paathute irundhom, suthama padikave ila gnabagam iruka? Apram public exam mudunja last day, namma veetuku cake vetta vandheenga... Apo thaan first time naan un pakathula ninnu photo eduthen. Andha cake-la 'D' pakathula 'S' nu ezhudhuna andha sweet memories ennaikuமே marakka mudiyathu da.</p>
+              <p>Namma last public exam revision apo, nee enaku exact-ah opposite-la thaan irundha. Nambala apdiye maari maari paathute irundhom, suthama padikave ila gnabagam iruka? Apram public exam mudunja last day, Enga veetuku cake vetta vandheenga... Apo thaan first time naan un pakathula ninnu photo eduthen. Andha cake-la 'D' pakathula 'S' nu ezhudhuna andha sweet memories eppavumea marakka mudiyathu da.</p>
               <button class="next-button" data-target="step-3">Next Memory ✨ ➡️</button>
             </div>
             <div class="card-media">
@@ -76,60 +78,82 @@
             <div class="card-copy">
               <p class="eyebrow">The Melody Touch & Our First Hug ❤️</p>
               <h2>Melody & That First Hug</h2>
-              <p>Oru naal en kaga nee bus-la last-aa eranguna... Apo thaan first time nee en kaiya touch panni, andha sweet-ana Melody chocolate vangi kudutha! And namma first hug... En birthday appo namma temple-ku poirundhom, namma appa kooda vandhum nambala mattum தனியா poirundhapo anga nee enaku oru keychain thandhu, unna mudhal time naan hug pannen! Absolute best day of my life.</p>
+              <p>Oru naal en kaga nee bus-la last-aa eranguna... Apo thaan first time nee en kaiya touch panni, andha Melody chocolate vangi kudutha! And namba first hug... En birthday appo namma temple-ku poirundhom, enoda appa kooda vandhanga aana nee konjam kud bayapadama kutitu pona ena....anga nee enaku oru keychain thandhu, unna mudhal time naan hug pannen! Absolute best day of my life.</p>
               <button class="next-button" data-target="step-4">Next Memory ✨ ➡️</button>
             </div>
           </div>
         </article>
 
         <article class="journey-step" id="step-4">
-          <div class="progress-card reverse accent-card">
-            <div class="card-copy">
-              <p class="eyebrow">Mother-Love Proclamation 💞</p>
-              <h2>For Your Amma</h2>
-              <p>Unga Amma-ku apram, unna intha ulagathula yaaruku romba pudikumna adhu enaku thaan! 🫂✨</p>
-              <button class="next-button" data-target="step-5">Next Memory ✨ ➡️</button>
-            </div>
-            <div class="card-media">
-              <img src="assets/bond_accent.jpg" alt="Bond accent" class="journey-media" />
-            </div>
-          </div>
-        </article>
+          <div class="love-msg-card">
+            <p class="eyebrow">What You Mean To Me 💌</p>
+            <h2 class="love-msg-title">Nee Vendumey... 😘🧡</h2>
 
-        <article class="journey-step" id="step-5">
-          <div class="apology-card">
-            <div class="apology-copy">
-              <p class="eyebrow">The Intense Deep Apology Card Component</p>
-              <h2>Romba Sorry... 🥺💔😔</h2>
-              <p>Naan unna romba kasta paduthirukan Ammu.. athuku oru vaarthaiyla 'Sorry' nu sonna kandipaa mudiyathu nu enaku theriyum. Nambala podatha sandaiye illa, apo namakula avlo problems lines vandhuchu, ipo irukra maari apo avlo understanding illa... En mela unaku kovam irundhalum, en anbu eppovume un kooda thaan irukum. Enna panrathu nu puriyama thaan intha chinna muyarchi.</p>
-              <button class="promise-button" id="promise-button" type="button">Read My Lifelong Promise ❤️</button>
+            <div class="msg-bubbles">
+              <div class="msg-bubble bubble-left">
+                <span class="bubble-emoji">🌙</span>
+                <p>Nee iruka pothum en ulagam complete-ah iruku da Ammu. Un oru smile paathalum en manasula oru azhagana feeling varuthu — adhu words-la sollave mudiyathu.</p>
+              </div>
+
+              <div class="msg-bubble bubble-right">
+                <span class="bubble-emoji">🧡</span>
+                <p>Ennaiku nee en kita pesinaa, en heart literally skip pannuthu. Un voice, un laugh, un way of caring — everything about you is my favorite thing in this world.</p>
+              </div>
+
+              <div class="msg-bubble bubble-left">
+                <span class="bubble-emoji">🫂</span>
+                <p>Nee sad-ah irundhalum, happy-ah irundhalum — naan un kita thaan irukanum nu thonnuthu. Un pain enaku pain, un joy enaku joy. That's how deeply I care for you.</p>
+              </div>
+
+              <div class="msg-bubble bubble-right">
+                <span class="bubble-emoji">✨</span>
+                <p>World-la yaarum enakku unna madhiri feel pananaga, yaarum en manasula nee kuduthadha safe feeling kudukave mudiyathu. You are irreplaceable, Ammu. Always.</p>
+              </div>
+
+              <div class="msg-bubble bubble-center">
+                <span class="bubble-emoji">❤️‍🔥</span>
+                <p>En life-la nadandha yellame, nadakka poran yellame — un kooda share pannanum nu thonnuthu. That feeling alone tells me everything. <strong>I love you, da.</strong></p>
+              </div>
             </div>
+
+            <!-- Target final-note to trigger simultaneously the audio playback and antigravity engines -->
+            <button class="next-button" data-target="final-note">One More Feeling... 🥺➡️</button>
           </div>
         </article>
       </section>
 
       <section class="final-note-view" id="final-note-view" aria-live="polite">
         <div class="final-note-card">
+
+          <!-- Portrait frame: black canvas with title ABOVE image, caption BELOW -->
           <div class="portrait-reveal-box" id="portrait-reveal-box">
             <div class="portrait-glow"></div>
-            <img src="assets/fav_portrait.jpg" alt="Favorite portrait" class="letter-portrait" />
+
+            <!-- Title nested INSIDE the black wrapper, above the image -->
+            <div class="portrait-top-label">Nee Vendumey.. 😘🧡</div>
+
+            <img src="assets/fav_portrait.jpg" alt="Favorite portrait of us" class="letter-portrait" />
             <div class="portrait-overlay">Tap to unlock our favorite frame 🔑✨</div>
           </div>
+
+          <!-- Caption sits BELOW the image panel frame -->
+          <h3 class="final-subtitle">Neee Pothumeyy... 🫂♾️</h3>
 
           <div class="caption-block" role="note">
             <p>Enku yen nu thrla Antha pic enku avlo pudikum..i love this! Every time I see, I fall in love with you... ❤️✨ Indha pic-ah paarkum bodhu yellam en manasula oru thonum da Ammu... Enna prachana nambala suthu irundhalum, un pakathula irukum podhu mattum thaan naan romba safe-ah, happy-ah iruken. Un mela naan vechiruka anbu eppovume koraiyadhu... 🫂</p>
           </div>
 
-          <div class="letter-body">
-            <p class="letter-body-text">Devanandh, unna enaku evlo pudikumnu enake solla theriyala da. Namma lovers-ah pesunadhum, naduvula pesama gap vizhundhadhum, ippo thirumba pesi successfully 1 year aagura indha payanamum... en vaazhkai laiye naan vaazhndha romba unmaiyana, azhagana phase.
-
-Arambathula nee enna 'D' nu kupda kita thatta 2 varusham aairuchii... aana ipo nee eppovume frequent-aa apdithan kupidra. Andha 'D' nu solum bothu its a kind of feelings athu yarutaum enku vanthathu ila but aana unta matum varuthu yen nu thrla..what ever 
-I will always there for you..!!
-love You Always Ammu..!! ❤️⏳</p>
+          <!-- Music hint shown when browser blocks autoplay -->
+          <div id="music-hint" role="status">
+            <span>🎵 Play our song</span>
+            <button id="music-hint-btn" type="button">Play ▶</button>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Invisible Audio node setup -->
+    <audio id="romantic-finale-track" src="assets/neeyum_naanum.mp3" loop></audio>
 
     <script src="js/main.js"></script>
   </body>
