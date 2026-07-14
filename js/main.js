@@ -14,7 +14,7 @@
   const lockScreen     = qs('#lock-screen');
   const heroPanel      = qs('#hero-panel');
   const journeyStage   = qs('#journey-stage');
-  const codeScreen     = qs('#code-screen');
+  const apologyScreen  = qs('#apology-screen');
   const portraitScreen = qs('#portrait-screen');
   const secretInput    = qs('#secret-key');
   const unlockButton   = qs('#unlock-button');
@@ -48,8 +48,7 @@
     showStep('step-1');
     portraitScreen.classList.remove('is-active');
     portraitScreen.style.display = 'none';
-    codeScreen.style.display = 'none';
-    codeScreen.classList.remove('is-active');
+    apologyScreen.style.display = 'none';
   }
 
   function unlockExperience() {
@@ -76,47 +75,48 @@
     window.setTimeout(() => { lockScreen.style.display = 'none'; }, 700);
   }
 
-  /* ── Transition to Code Apology Terminal ───────────────────────── */
-  function showCodeScreen() {
+  /* ═══════════════════════════════════════════════════════════════════
+     APOLOGY SCREEN — Show the white aesthetic card
+     NO music plays here — silence for emotional reading
+  ═══════════════════════════════════════════════════════════════════ */
+  function showApologyScreen() {
     journeyStage.style.display = 'none';
     journeyStage.classList.remove('is-visible');
     clearStepView();
 
-    codeScreen.style.display = 'grid';
-    codeScreen.classList.add('is-active');
-    codeScreen.style.zIndex = '18';
-    
-    /* Crucially: music MUST NOT play on this apology text screen */
+    apologyScreen.style.display = 'grid';
+    apologyScreen.style.zIndex = '18';
   }
 
-  /* ── Transition from Code Screen to Portrait Screen with music and particles ── */
-  function decodeApology() {
-    codeScreen.classList.add('fade-out');
-    
-    // Wait for the fade-out transition, then switch screens
+  /* ═══════════════════════════════════════════════════════════════════
+     PORTRAIT SCREEN — Fade out apology, reveal portrait + music
+     a) Smooth fade-out of apology card
+     b) Show portrait screen
+     c) Auto-play romantic-finale-track from t=0
+     d) Launch antigravity particle engine
+  ═══════════════════════════════════════════════════════════════════ */
+  function showPortraitScreen() {
+    apologyScreen.classList.add('fade-out');
+
     window.setTimeout(() => {
-      codeScreen.style.display = 'none';
-      codeScreen.classList.remove('is-active');
-      codeScreen.classList.remove('fade-out');
-      
+      apologyScreen.style.display = 'none';
+      apologyScreen.classList.remove('fade-out');
+
       portraitScreen.style.display = 'grid';
       portraitScreen.classList.add('is-active');
       portraitScreen.style.zIndex = '18';
 
-      /* a) Instantly auto-play romantic track from the beginning */
+      /* Auto-play audio from the very beginning */
       if (bgMusic) {
         bgMusic.currentTime = 0;
         bgMusic.volume = 0.85;
-        bgMusic.play().then(() => {
-          // Playback started successfully
-        }).catch(() => {
-          /* Fallback if autoplay gets blocked by browser policy */
+        bgMusic.play().catch(() => {
           const hint = qs('#music-hint');
           if (hint) hint.style.display = 'flex';
         });
       }
 
-      /* b) Trigger the lightweight requestAnimationFrame particle generator */
+      /* Launch antigravity engine */
       initAntigravityEngine();
     }, 500);
   }
@@ -253,41 +253,46 @@
      BOOT
   ═══════════════════════════════════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
+    /* Initial display state */
     heroPanel.classList.remove('is-hidden');
     heroPanel.style.display = 'grid';
     journeyStage.classList.remove('is-visible');
     journeyStage.style.display = 'none';
     portraitScreen.classList.remove('is-active');
     portraitScreen.style.display = 'none';
-    codeScreen.style.display = 'none';
-    codeScreen.classList.remove('is-active');
+    apologyScreen.style.display = 'none';
     clearStepView();
 
+    /* Hero → Journey */
     qs('.hero-button').addEventListener('click', openJourney);
 
+    /* Journey next buttons */
     qsa('.next-button').forEach((btn) => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-target');
         if (!target) return;
-        if (target === 'code-screen') {
-          showCodeScreen();
+        if (target === 'apology-screen') {
+          showApologyScreen();
         } else {
           showStep(target);
         }
       });
     });
 
-    const decodeBtn = qs('#decode-btn');
-    if (decodeBtn) {
-      decodeBtn.addEventListener('click', decodeApology);
+    /* Apology → Portrait transition */
+    const apologyBtn = qs('#apology-next-btn');
+    if (apologyBtn) {
+      apologyBtn.addEventListener('click', showPortraitScreen);
     }
 
+    /* Portrait tap-to-reveal */
     if (portraitBox) {
       portraitBox.addEventListener('click', () => {
         portraitBox.classList.add('revealed');
       });
     }
 
+    /* Music fallback button */
     const musicHintBtn = qs('#music-hint-btn');
     if (musicHintBtn && bgMusic) {
       musicHintBtn.addEventListener('click', () => {
@@ -297,6 +302,7 @@
       });
     }
 
+    /* Lock screen */
     unlockButton.addEventListener('click', unlockExperience);
     secretInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') { e.preventDefault(); unlockExperience(); }

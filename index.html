@@ -16,6 +16,7 @@
     <div id="particle-layer" aria-hidden="true"></div>
     <div class="watermark">DS</div>
 
+    <!-- ═══════════════════ LOCK SCREEN ═══════════════════ -->
     <div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
       <div class="lock-card">
         <p class="lock-eyebrow">Secret Access</p>
@@ -30,6 +31,8 @@
     </div>
 
     <main class="page-shell">
+
+      <!-- ═══════════════════ HERO PANEL ═══════════════════ -->
       <section class="hero-panel" id="hero-panel">
         <div class="hero-card">
           <div class="hero-copy">
@@ -41,6 +44,7 @@
         </div>
       </section>
 
+      <!-- ═══════════════════ JOURNEY STEPS ═══════════════════ -->
       <section class="journey-stage" id="journey-stage" aria-live="polite">
         <article class="journey-step is-active" id="step-1">
           <div class="progress-card">
@@ -59,8 +63,8 @@
         <article class="journey-step" id="step-2">
           <div class="progress-card reverse">
             <div class="card-copy">
-              <p class="eyebrow">The Revision Exam & Cake Cutting 🎂</p>
-              <h2>Revision Day & Cake</h2>
+              <p class="eyebrow">The Revision Exam &amp; Cake Cutting 🎂</p>
+              <h2>Revision Day &amp; Cake</h2>
               <p>Namma last public exam revision apo, nee enaku exact-ah opposite-la thaan irundha. Nambala apdiye maari maari paathute irundhom, suthama padikave ila gnabagam iruka? Apram public exam mudunja last day, Enga veetuku cake vetta vandheenga... Apo thaan first time naan un pakathula ninnu photo eduthen. Andha cake-la 'D' pakathula 'S' nu irunthuchii ana nan pakala athaum neethan sona apo vanthu ena aachi na i think un mobile kanam..lap la enku txt panna enku nybkm iruku unku iruka...</p>
               <button class="next-button" data-target="step-3">Next Memory ✨ ➡️</button>
             </div>
@@ -76,8 +80,8 @@
               <img src="assets/reconnect.jpg" alt="Melody touch and first hug" class="journey-media" />
             </div>
             <div class="card-copy">
-              <p class="eyebrow">The Melody Touch & Our First Hug ❤️</p>
-              <h2>Melody & That First Hug</h2>
+              <p class="eyebrow">The Melody Touch &amp; Our First Hug ❤️</p>
+              <h2>Melody &amp; That First Hug</h2>
               <p>Oru naal en kaga nee bus-la last-aa eranguna... Apo thaan first time nee en kaiya touch panni, andha Melody chocolate vangi kudutha! And namba first hug... En birthday appo namma temple-ku poirundhom, enoda appa kooda vandhanga aana nee konjam kuda bayapadama kutitu pona ena....anga nee enaku oru keychain thandha, unna first time naan hug pannen! and athu than namloda first hug aana ipo paaru..apdiya irukom keta kuda tharamatra nee... Absolute best day of my life.</p>
               <button class="next-button" data-target="step-4">Next Memory ✨ ➡️</button>
             </div>
@@ -113,79 +117,54 @@
               <div class="msg-bubble bubble-center">
                 <span class="bubble-emoji">❤️‍🔥</span>
                 <p>Dailumea nan unta nadantha soluvan neeum soluva..nearaya Stry peasuvom..But i know you still Love me but aana ena keata than solamatraa..Nee enakaga ellamea pandra aana ena Atha matum solamtra..lets see what will happens...But the END. <strong>I STILL LOVE YOU.</strong></p>
-            
-            <!-- Target code-screen to trigger the interactive code apology terminal -->
-            <button class="next-button" data-target="code-screen">One More Feeling... 🥺➡️</button>
+              </div>
+            </div>
+
+            <button class="next-button" data-target="apology-screen">One More Feeling... 🥺➡️</button>
           </div>
         </article>
       </section>
 
-      <!-- Code Screen: apology coding terminal wrapper -->
-      <div id="code-screen" class="card-screen" style="display: none;">
-        <div class="terminal-card">
-          <div class="terminal-header">
-            <div class="terminal-dot red-dot"></div>
-            <div class="terminal-dot yellow-dot"></div>
-            <div class="terminal-dot green-dot"></div>
-            <span class="terminal-title">apology_protocol.js</span>
-          </div>
-          <div class="terminal-body">
-            <pre><code class="language-js"><span class="code-comment">/* 
- * SYSTEM STATUS: DEEP GUILT DETECTED
- * PROCESSING EMOTIONAL REPAIR PROTOCOL...
- */</span>
+      <!-- ═══════════════════ APOLOGY SCREEN ═══════════════════ -->
+      <div id="apology-screen" class="apology-overlay" style="display: none;">
+        <div class="aesthetic-card">
+          <p class="apology-eyebrow">MY HEART TO YOURS 🤍</p>
 
-<span class="code-comment">// First nan SORRY solikiran... 🥺</span>
-<span class="code-comment">// eathukuna Nan una nearaya hurt panirukan aluthuruka enala.</span>
-<span class="code-comment">// ithukulam sry nu antha oru varthai la almea seriya poguma nu keata...</span>
-<span class="code-comment">// kandipa keadaiyathu... 💔</span>
+          <div class="apology-body">
+            <p class="apology-highlight">First nan SORRY solikiran... 🥺</p>
 
-<span class="code-keyword">try</span> {
-    <span class="code-keyword">let</span> my_guilt = <span class="code-variable">Infinity</span>;
-    <span class="code-comment">// But enku ena panarathu nu thrla,,, Still ipovum nearaya guilt iruku enkula.
-    // atha epayavathu thonum pothu lam aluga vanthurum enku..
-    // ipovum but aana atha oru time untayea solli alunthan..
-    // unku nybkm iruka nu thrla.. I Still remember that.. 🫂</span>
-} <span class="code-keyword">catch</span> (error) {
-    <span class="code-comment">// Oru relationaship la panna kudathatha nan panirukan unaku athuu elamea enoda thappu than
-    // I Agreed for this. 🩹</span>
-}
+            <p>Eathukuna nan una nearaya hurt panirukan, aluthuruka enala. Ithukulam "sry" nu antha oru varthai la ellamea seriya poguma nu keata, kandipa keadaiyathu... 💔</p>
 
-<span class="code-comment">// Final Question to Heart Core:</span>
-<span class="code-keyword">if</span> (you.canForgiveMe() === <span class="code-keyword">true</span>) {
-    <span class="code-variable">console</span>.log(<span class="code-string">"Una romba naal kekanum nu nenachitu irukan ipo soluran..."</span>);
-    <span class="code-variable">askQuestion</span>(<span class="code-string">"But ne ena again Love panuvaya nu thrla...?? 🥺👉👈"</span>);
-}</code></pre>
+            <p>But enaku ena panarathu nu thrla... Still ipovum nearaya guilt iruku enkula. Atha epayavathu thonum pothu lam aluga vanthurum enku.. enaku atha ena panarathu nu thrla...</p>
+
+            <p>Ipovum but aana atha oru time untayea solli alunthan, unaku nybkm iruka nu thrla... I still remember that... 🫂</p>
+
+            <p>Oru relationship la panna kudathatha nan panirukan unaku, athu ellamea enoda thappu than. I agreed for this completely. 🩹</p>
+
+            <p class="apology-highlight">But ne ena again Love panuvaya nu thrla... Una romba naal kekanum nu nenachitu irukan, ipo soluran... 🥺👉👈</p>
           </div>
-          <div class="terminal-footer">
-            <button id="decode-btn" class="cute-btn">Click here to see the truth... 🗝️</button>
-          </div>
+
+          <button id="apology-next-btn" class="unlock-btn" type="button">Click here to see the truth... 🗝️</button>
         </div>
       </div>
 
-      <!-- Final Portrait Screen: revealed with romantic finale track play -->
+      <!-- ═══════════════════ PORTRAIT SCREEN ═══════════════════ -->
       <section class="final-note-view" id="portrait-screen" aria-live="polite">
         <div class="final-note-card">
 
-          <!-- Portrait frame: black canvas with title ABOVE image, caption BELOW -->
           <div class="portrait-reveal-box" id="portrait-reveal-box">
             <div class="portrait-glow"></div>
-
-            <!-- Title nested INSIDE the black wrapper, above the image -->
             <div class="portrait-top-label">Nee Vendumey.. 😘🧡</div>
-
             <img src="assets/fav_portrait.jpg" alt="Favorite portrait of us" class="letter-portrait" />
             <div class="portrait-overlay">Tap to unlock our favorite frame 🔑✨</div>
           </div>
 
-          <!-- Caption sits BELOW the image panel frame -->
           <h3 class="final-subtitle">Neee Pothumeyy... 🫂♾️</h3>
 
           <div class="caption-block" role="note">
             <p>Enku yen nu thrla da Antha pic enku avlo pudikum..i love this! Every time I see, I fall in love with you... ❤️✨ Indha pic-ah paarkum bodhu yellam en manasula oru thonum da Ammu... Enna prachana nambala suthu irundhalum, un pakathula irukum podhu mattum thaan naan romba safe-ah, happy-ah iruken. Un mela naan vechiruka anbu eppovume koraiyadhu... 🫂</p>
           </div>
 
-          <!-- Music hint shown when browser blocks autoplay -->
           <div id="music-hint" role="status">
             <span>🎵 Play our song</span>
             <button id="music-hint-btn" type="button">Play ▶</button>
@@ -194,7 +173,7 @@
       </section>
     </main>
 
-    <!-- Invisible Audio node setup -->
+    <!-- Invisible Audio node -->
     <audio id="romantic-finale-track" src="assets/neeyum_naanum.mp3" loop></audio>
 
     <script src="js/main.js"></script>

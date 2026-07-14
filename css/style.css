@@ -33,13 +33,12 @@ body {
 /* ═══════════════════════════════════════════════════════════════════════
    LAYER STACK  (low → high)
      -1 : watermark
-      0 : #particle-layer  — fixed, pointer-events none
-     10 : all content panels, cards, buttons
-     18 : .final-note-view
-     20 : .lock-screen
+      0 : #particle-layer
+     10 : all content panels
+     18 : overlays (apology, portrait)
+     20 : lock-screen
 ═══════════════════════════════════════════════════════════════════════ */
 
-/* Watermark */
 .watermark {
   position: fixed;
   inset: 0;
@@ -53,10 +52,6 @@ body {
   user-select: none;
 }
 
-/* ── Antigravity Particle Layer ──────────────────────────────────────
-   position:fixed  z-index:0  pointer-events:none
-   Particles placed with position:absolute inside; JS drives transform.
-─────────────────────────────────────────────────────────────────────*/
 #particle-layer {
   position: fixed;
   inset: 0;
@@ -66,7 +61,6 @@ body {
   will-change: transform;
 }
 
-/* Individual rAF-driven particles — NO CSS animation */
 #particle-layer span {
   position: absolute;
   top: 0;
@@ -88,7 +82,6 @@ body {
   min-height: 100vh;
 }
 
-/* ── Primary view panels ─────────────────────────────────────────── */
 .hero-panel,
 .journey-stage {
   position: relative;
@@ -247,7 +240,6 @@ body {
 
 /* ═══════════════════════════════════════════════════════════════════════
    LOVE MESSAGE CARD  (Step 4)
-   z-index: 10 — above particle layer, fully clickable
 ═══════════════════════════════════════════════════════════════════════ */
 .love-msg-card {
   padding: 40px 36px 32px;
@@ -420,131 +412,105 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   CODE SCREEN & SYNTAX HIGHLIGHTING (Step 5 — Apology Code Terminal)
+   APOLOGY SCREEN  —  White Aesthetic Card
+   Matches the "Secret Access" lock screen design language
+   position:fixed  z-index:18  centered overlay
 ═══════════════════════════════════════════════════════════════════════ */
-.card-screen {
+.apology-overlay {
   position: fixed;
   inset: 0;
   z-index: 18;
-  place-items: start center;
+  display: grid;
+  place-items: center;
   padding: 24px;
   overflow-y: auto;
   background: linear-gradient(
-    180deg,
-    rgba(35, 30, 28, 0.70) 0%,
-    rgba(25, 20, 18, 0.60) 100%
+    135deg,
+    rgba(255, 247, 232, 0.88) 0%,
+    rgba(250, 233, 215, 0.82) 100%
   );
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: opacity 0.5s ease;
 }
 
-.card-screen.fade-out {
+.apology-overlay.fade-out {
   opacity: 0;
+  pointer-events: none;
 }
 
-.terminal-card {
-  background: rgba(30, 30, 30, 0.95);
-  border-radius: 12px;
-  padding: 25px;
-  font-family: 'Courier New', monospace;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-  text-align: left;
-  line-height: 1.6;
-  max-width: 760px;
-  width: 100%;
-  margin: auto;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.aesthetic-card {
+  width: min(100%, 600px);
+  padding: 44px 36px;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.90);
+  box-shadow:
+    0 20px 60px rgba(60, 33, 16, 0.10),
+    0 4px 16px rgba(180, 120, 80, 0.06);
+  text-align: center;
   position: relative;
-  z-index: 100; /* Elevated z-index to stay above background */
-  overflow: hidden;
+  z-index: 10;
 }
 
-.terminal-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.apology-eyebrow {
+  margin: 0 0 22px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 
-.terminal-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+.apology-body {
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.apology-body p {
+  margin: 0 0 18px;
+  line-height: 1.82;
+  color: #5c4e4b;
+  font-size: 1rem;
+}
+
+.apology-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlighted first & final lines — warm pink-peach */
+.apology-highlight {
+  color: #bd7a6b !important;
+  font-weight: 600;
+  font-size: 1.05rem !important;
+}
+
+/* Unlock-style gradient button */
+.unlock-btn {
   display: inline-block;
-}
-
-.red-dot { background: #ff5f56; }
-.yellow-dot { background: #ffbd2e; }
-.green-dot { background: #27c93f; }
-
-.terminal-title {
-  color: #8e8e8e;
-  font-size: 0.85rem;
-  margin-left: 8px;
-}
-
-.terminal-body {
-  overflow-x: auto;
-}
-
-.terminal-body code {
-  color: #f8f8f2;
-  font-size: clamp(0.85rem, 2vw, 0.95rem);
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-
-/* Syntax colors */
-.code-keyword {
-  color: #ff79c6; /* neon pink */
-  font-weight: bold;
-}
-
-.code-variable {
-  color: #8be9fd; /* neon blue */
-}
-
-.code-comment {
-  color: #50fa7b; /* soft green */
-  font-style: italic;
-}
-
-.code-string {
-  color: #f1fa8c; /* soft yellow */
-}
-
-.terminal-footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 16px;
-}
-
-.cute-btn {
   border: none;
   border-radius: 999px;
-  padding: 14px 28px;
+  padding: 15px 32px;
   color: #fff;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
   cursor: pointer;
   font-weight: 700;
-  font-size: 0.97rem;
-  box-shadow: 0 16px 30px rgba(255, 139, 114, 0.20);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 14px 32px rgba(255, 154, 158, 0.28);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+  z-index: 10;
 }
 
-.cute-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 38px rgba(255, 139, 114, 0.28);
+.unlock-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(255, 154, 158, 0.36);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   FINAL NOTE VIEW  (Portrait + Caption)
+   FINAL NOTE VIEW  (Portrait Screen)
    position:fixed  z-index:18  overflow-y:auto
-   All inner content: z-index:10, position:relative — crisp & clickable
 ═══════════════════════════════════════════════════════════════════════ */
 .final-note-view {
   display: none;
@@ -573,7 +539,6 @@ body {
   margin: auto;
 }
 
-/* ── Final subtitle — below portrait ────────────────────────────── */
 .final-subtitle {
   font-family: 'Inter', sans-serif;
   font-size: clamp(1.4rem, 2.5vw, 2.0rem);
@@ -587,8 +552,6 @@ body {
 
 /* ═══════════════════════════════════════════════════════════════════════
    PORTRAIT BLACK CANVAS FRAME
-   Black background creates a film-frame effect.
-   Title label sits ABOVE image on black canvas in white.
 ═══════════════════════════════════════════════════════════════════════ */
 .portrait-reveal-box {
   position: relative;
@@ -604,7 +567,6 @@ body {
   align-items: center;
 }
 
-/* White title nested INSIDE black wrapper, ABOVE the image */
 .portrait-top-label {
   width: 100%;
   color: #ffffff;
@@ -639,7 +601,6 @@ body {
 .letter-portrait {
   width: 100%;
   max-width: 480px;
-  /* Flush under the label, rounded only at bottom */
   border-radius: 0 0 24px 24px;
   object-fit: contain;
   display: block;
@@ -647,7 +608,6 @@ body {
   z-index: 1;
 }
 
-/* Dark cinematic overlay before tap */
 .portrait-overlay {
   position: absolute;
   inset: 0;
@@ -672,7 +632,6 @@ body {
   pointer-events: none;
 }
 
-/* ── Caption block below the portrait ──────────────────────────── */
 .caption-block {
   margin: 0 0 22px;
   padding: 18px 24px;
@@ -686,7 +645,7 @@ body {
   z-index: 10;
 }
 
-/* ── Music hint (autoplay blocked fallback) ─────────────────────── */
+/* ── Music hint ─────────────────────────────────────────────────── */
 #music-hint {
   display: none;
   align-items: center;
@@ -764,6 +723,7 @@ body {
   .journey-media   { min-height: 240px; }
   .final-note-card { padding: 28px 22px; }
   .love-msg-card   { padding: 30px 20px 24px; }
+  .aesthetic-card  { padding: 32px 24px; }
 }
 
 @media (max-width: 640px) {
@@ -775,4 +735,6 @@ body {
   .msg-bubble     { max-width: 96%; font-size: 0.93rem; }
   .bubble-center  { max-width: 92%; }
   .love-msg-title { font-size: 2rem; }
+  .aesthetic-card { padding: 28px 18px; }
+  .apology-body p { font-size: 0.95rem; }
 }
