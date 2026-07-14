@@ -420,6 +420,128 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   CODE SCREEN & SYNTAX HIGHLIGHTING (Step 5 — Apology Code Terminal)
+═══════════════════════════════════════════════════════════════════════ */
+.card-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 18;
+  place-items: start center;
+  padding: 24px;
+  overflow-y: auto;
+  background: linear-gradient(
+    180deg,
+    rgba(35, 30, 28, 0.70) 0%,
+    rgba(25, 20, 18, 0.60) 100%
+  );
+  backdrop-filter: blur(4px);
+  transition: opacity 0.5s ease;
+}
+
+.card-screen.fade-out {
+  opacity: 0;
+}
+
+.terminal-card {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 25px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  text-align: left;
+  line-height: 1.6;
+  max-width: 760px;
+  width: 100%;
+  margin: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 100; /* Elevated z-index to stay above background */
+  overflow: hidden;
+}
+
+.terminal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red-dot { background: #ff5f56; }
+.yellow-dot { background: #ffbd2e; }
+.green-dot { background: #27c93f; }
+
+.terminal-title {
+  color: #8e8e8e;
+  font-size: 0.85rem;
+  margin-left: 8px;
+}
+
+.terminal-body {
+  overflow-x: auto;
+}
+
+.terminal-body code {
+  color: #f8f8f2;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Syntax colors */
+.code-keyword {
+  color: #ff79c6; /* neon pink */
+  font-weight: bold;
+}
+
+.code-variable {
+  color: #8be9fd; /* neon blue */
+}
+
+.code-comment {
+  color: #50fa7b; /* soft green */
+  font-style: italic;
+}
+
+.code-string {
+  color: #f1fa8c; /* soft yellow */
+}
+
+.terminal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+}
+
+.cute-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.97rem;
+  box-shadow: 0 16px 30px rgba(255, 139, 114, 0.20);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cute-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 38px rgba(255, 139, 114, 0.28);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    FINAL NOTE VIEW  (Portrait + Caption)
    position:fixed  z-index:18  overflow-y:auto
    All inner content: z-index:10, position:relative — crisp & clickable
