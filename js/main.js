@@ -86,6 +86,9 @@
 
     apologyScreen.style.display = 'grid';
     apologyScreen.style.zIndex = '18';
+
+    /* Launch antigravity engine so it floats behind the apology screen */
+    initAntigravityEngine();
   }
 
   /* ═══════════════════════════════════════════════════════════════════
@@ -96,6 +99,16 @@
      d) Launch antigravity particle engine
   ═══════════════════════════════════════════════════════════════════ */
   function showPortraitScreen() {
+    /* Auto-play audio from the very beginning, at the exact millisecond of transition start */
+    if (bgMusic) {
+      bgMusic.currentTime = 0;
+      bgMusic.volume = 0.85;
+      bgMusic.play().catch(() => {
+        const hint = qs('#music-hint');
+        if (hint) hint.style.display = 'flex';
+      });
+    }
+
     apologyScreen.classList.add('fade-out');
 
     window.setTimeout(() => {
@@ -106,17 +119,7 @@
       portraitScreen.classList.add('is-active');
       portraitScreen.style.zIndex = '18';
 
-      /* Auto-play audio from the very beginning */
-      if (bgMusic) {
-        bgMusic.currentTime = 0;
-        bgMusic.volume = 0.85;
-        bgMusic.play().catch(() => {
-          const hint = qs('#music-hint');
-          if (hint) hint.style.display = 'flex';
-        });
-      }
-
-      /* Launch antigravity engine */
+      /* Launch antigravity engine (no-op if already running) */
       initAntigravityEngine();
     }, 500);
   }
