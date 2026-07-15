@@ -562,118 +562,167 @@ body {
 .final-note-view.is-active { display: grid; }
 
 .final-note-card {
-  width: min(100%, 780px);
-  padding: 38px 32px;
+  width: min(100%, 1020px);
+  padding: 44px 36px;
   text-align: center;
   position: relative;
   z-index: 10;
   margin: auto;
 }
 
-.final-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1.4rem, 2.5vw, 2.0rem);
-  font-weight: 700;
-  color: #ff8b72;
-  margin: 20px auto;
-  position: relative;
-  z-index: 10;
-  letter-spacing: 0.05em;
-}
+
 
 /* ═══════════════════════════════════════════════════════════════════════
    PORTRAIT BLACK CANVAS FRAME
 ═══════════════════════════════════════════════════════════════════════ */
-.portrait-reveal-box {
-  position: relative;
-  max-width: 480px;
-  margin: 0 auto 24px;
-  overflow: hidden;
-  border-radius: 28px;
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CUTE MEMORIES PHOTO GRID (Polaroid Style)
+   ═══════════════════════════════════════════════════════════════════════ */
+.cute-memories-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.memory-frame {
+  background: #ffffff;
+  padding: 16px 16px 24px 16px;
+  border-radius: 4px;
+  box-shadow: 0 12px 36px rgba(60, 33, 16, 0.09), 0 1px 3px rgba(0,0,0,0.02);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
   cursor: pointer;
-  z-index: 10;
-  background: #000000;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.portrait-top-label {
-  width: 100%;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
   text-align: center;
-  padding: 18px 16px 8px 16px;
-  position: relative;
-  z-index: 10;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 24px rgba(255, 180, 120, 0.55), 0 2px 8px rgba(0,0,0,0.6);
-  line-height: 1.2;
-}
-
-.portrait-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  background: radial-gradient(circle at center, rgba(255, 190, 140, 0.38), transparent 52%);
+  --rot: 3deg;
+  transform: rotate(var(--rot));
   opacity: 0;
-  transition: opacity 0.45s ease;
-  pointer-events: none;
-  z-index: 0;
 }
 
-.portrait-reveal-box.revealed .portrait-glow {
-  opacity: 1;
-  animation: goldenGlow 4s ease-in-out infinite alternate;
+.memory-frame:nth-child(odd) {
+  --rot: -3deg;
 }
 
-.letter-portrait {
+.memory-frame:nth-child(even) {
+  --rot: 3deg;
+}
+
+.memory-frame:hover {
+  transform: scale(1.06) rotate(0deg) !important;
+  box-shadow: 0 22px 48px rgba(60, 33, 16, 0.16);
+  z-index: 50;
+}
+
+.memory-frame img {
   width: 100%;
-  max-width: 480px;
-  border-radius: 0 0 24px 24px;
-  object-fit: contain;
-  display: block;
-  position: relative;
-  z-index: 1;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.portrait-overlay {
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(14px);
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.memory-frame p {
+  margin: 0;
+  font-size: 15px;
   font-weight: 700;
-  color: #ffffff;
+  color: #4a3e3d;
+  line-height: 1.4;
+}
+
+.memory-frame p span {
+  display: block;
+  font-size: 12px;
+  font-weight: 300;
+  font-family: 'Dancing Script', cursive, sans-serif;
+  color: #8a7673;
+  margin-top: 5px;
+  line-height: 1.3;
+}
+
+/* Staggered Entrance Animations */
+.final-note-view.is-active .memory-frame {
+  animation: polaroidFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.final-note-view.is-active .m-1  { animation-delay: 0.1s; }
+.final-note-view.is-active .m-2  { animation-delay: 0.2s; }
+.final-note-view.is-active .m-3  { animation-delay: 0.3s; }
+.final-note-view.is-active .m-4  { animation-delay: 0.4s; }
+.final-note-view.is-active .m-5  { animation-delay: 0.5s; }
+.final-note-view.is-active .m-6  { animation-delay: 0.6s; }
+.final-note-view.is-active .m-7  { animation-delay: 0.7s; }
+.final-note-view.is-active .m-8  { animation-delay: 0.8s; }
+.final-note-view.is-active .m-9  { animation-delay: 0.9s; }
+.final-note-view.is-active .m-10 { animation-delay: 1.0s; }
+.final-note-view.is-active .m-11 { animation-delay: 1.1s; }
+
+@keyframes polaroidFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9) rotate(calc(var(--rot) * 1.5));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--rot));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CENTERPIECE MASTERPIECE FRAME
+   ═══════════════════════════════════════════════════════════════════════ */
+.centerpiece-frame {
+  max-width: 480px;
+  width: 100%;
+  margin: 60px auto 20px;
+  background: #ffffff;
+  padding: 20px 20px 28px 20px;
+  border-radius: 6px;
+  box-shadow: 0 20px 50px rgba(60, 33, 16, 0.12);
   text-align: center;
-  z-index: 12;
-  font-size: 1.05rem;
-  letter-spacing: 0.04em;
-}
-
-.portrait-reveal-box.revealed .portrait-overlay {
-  opacity: 0;
-  transform: scale(0.96);
-  pointer-events: none;
-}
-
-.caption-block {
-  margin: 0 0 22px;
-  padding: 18px 24px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.70);
-  border: 1px solid rgba(255, 255, 255, 0.92);
-  font-style: italic;
-  color: #5b433b;
-  line-height: 1.72;
   position: relative;
   z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  opacity: 0;
+}
+
+.final-note-view.is-active .centerpiece-frame {
+  animation: centerpieceFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 1.3s;
+}
+
+.centerpiece-frame img {
+  width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.romantic-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: #bd7a6b;
+  margin: 0;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+@keyframes centerpieceFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* ── Music hint ─────────────────────────────────────────────────── */

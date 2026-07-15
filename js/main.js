@@ -19,7 +19,6 @@
   const secretInput    = qs('#secret-key');
   const unlockButton   = qs('#unlock-button');
   const lockError      = qs('#lock-error');
-  const portraitBox    = qs('#portrait-reveal-box');
   const bgMusic        = qs('#romantic-finale-track');
   const acceptedKeys   = ['04-09-2022', '4-9-2022'];
 
@@ -288,12 +287,7 @@
       apologyBtn.addEventListener('click', showPortraitScreen);
     }
 
-    /* Portrait tap-to-reveal */
-    if (portraitBox) {
-      portraitBox.addEventListener('click', () => {
-        portraitBox.classList.add('revealed');
-      });
-    }
+
 
     /* Music fallback button */
     const musicHintBtn = qs('#music-hint-btn');
