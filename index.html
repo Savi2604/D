@@ -44,9 +44,69 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════
-         SCREEN 1 — INTRO / APOLOGY
+         SCREEN 1 — INTRO / JOURNEY
     ═══════════════════════════════════════════════ -->
     <div id="intro-screen" class="screen-layer" style="display:none;">
+      
+      <!-- Initial State -->
+      <div id="intro-start" class="intro-inner">
+        <div class="intro-card">
+          <h2 class="intro-title">Nee Enaku Romba Pudikum... ❤️</h2>
+          <button id="open-journey-btn" class="cta-btn" type="button">
+            Open the Journey ✨
+          </button>
+        </div>
+      </div>
+
+      <!-- Journey Sequence -->
+      <div id="journey-sequence" class="journey-sequence-wrapper" style="display:none;">
+        
+        <!-- Memory 1 -->
+        <article class="journey-step is-active" id="j-step-1">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/journey_1.jpg" alt="Memory 1" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: journey_1.jpg</text></svg>'" />
+            </div>
+            <div class="card-copy">
+              <p>First time nama pesuna andha sweet conversation... En lifetime-ukum marakaadhu! 🌸</p>
+              <button class="j-next-btn cta-btn cta-btn--small" data-target="j-step-2">Next Memory ✨ ➡️</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Memory 2 -->
+        <article class="journey-step" id="j-step-2" style="display:none;">
+          <div class="progress-card reverse">
+            <div class="card-copy">
+              <p>Namma sanda podumbodhulaam, unna samadhanam panna naan patta paadu iruke... 🥰</p>
+              <button class="j-next-btn cta-btn cta-btn--small" data-target="j-step-3">Next Memory ✨ ➡️</button>
+            </div>
+            <div class="card-media">
+              <img src="assets/journey_2.jpg" alt="Memory 2" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: journey_2.jpg</text></svg>'" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Memory 3 -->
+        <article class="journey-step" id="j-step-3" style="display:none;">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/journey_3.jpg" alt="Memory 3" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: journey_3.jpg</text></svg>'" />
+            </div>
+            <div class="card-copy">
+              <p>Innaiku varai en koodaye irundhu enna thangi pudikura en anbe... 🫂</p>
+              <button id="go-to-apology-btn" class="cta-btn cta-btn--warm">See More ❤️</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 2 — APOLOGY SCREEN
+    ═══════════════════════════════════════════════ -->
+    <div id="apology-screen" class="screen-layer" style="display:none;">
       <div class="intro-inner">
         <div class="intro-card">
           <p class="intro-eyebrow">MY HEART TO YOURS 🤍✨</p>
@@ -84,25 +144,19 @@
           </div>
 
           <button id="see-memories-btn" class="cta-btn" type="button">
-            See Our Memories ❤️
+            Next ➡️
           </button>
         </div>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════
-         SCREEN 2 — MEMORIES PHOTO GRID
+         SCREEN 3 — MEMORIES PHOTO GRID
     ═══════════════════════════════════════════════ -->
     <div id="memories-screen" class="screen-layer memories-screen" style="display:none;">
       <div class="memories-wrapper">
-        <div class="memories-header">
-          <p class="screen-eyebrow">Our Beautiful Memories 📸</p>
-          <h2 class="screen-title">Every Frame, A Feeling 🌸</h2>
-          <p class="screen-sub">Click a memory to feel it again...</p>
-        </div>
-
         <div class="polaroid-grid">
-
+          
           <div class="polaroid-card p-1">
             <div class="washi-tape"></div>
             <div class="polaroid-photo-wrap">
@@ -213,7 +267,7 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════
-         SCREEN 3 — GRAND FINALE
+         SCREEN 4 — GRAND FINALE
     ═══════════════════════════════════════════════ -->
     <div id="final-portrait-screen" class="screen-layer final-screen" style="display:none;">
       <div class="final-wrapper">
@@ -224,30 +278,21 @@
             src="assets/fav_potrait.jpeg"
             alt="My Favorite Portrait"
             class="portrait-img"
+            onerror="this.onerror=null;this.src='assets/fav_potrait.jpg'"
           />
         </div>
 
-        <h2 class="romantic-finale-title">We Fight..We Fix..We Stay..♾️❤️</h2>
+        <h2 class="romantic-finale-title">Nee Vendumey... ♾️❤️</h2>
 
         <div class="finale-letter">
           <p>
-            Ammu... 💖 enku yen intha pic avlo pudichirukunu thrla.. 🥺 ithuku paakum pothu oru maari
-            nalla feel aa aguthu... and then may be namba intha maari pic eduthathy ila nu nenakirn
-            like intha mari kaiya pudichitu... 🤝✨ literal aa 7 yrs achi neeum nanum peasa aaramichii...
-            Still we are together.. ♾️❤️
+            Ammu... 💖 enku yen intha pic avlo pudichirukunu thrla.. 🥺 ithuku paakum pothu oru maari nalla feel aa aguthu... and then may be namba intha maari pic eduthathy ila nu nenakirn like intha mari kaiya pudichitu... 🤝✨ literal aa 7 yrs achi neeum nanum peasa aaramichii... Still we are together.. ♾️❤️
           </p>
           <p>
-            Aana neajama ina varum enku onu thrla, unkuda irukum pothu matum epdii antha relationship
-            yrs aa thandi poguthu nu sathiyama thrla enku.. 🤷‍♀️💕 athuku reason ne ya ila nan nu enku thrla,
-            but whatever atlast only US... 🫂🌸 7 varusham pochu nu sonna sathyama namba mudiyala,
-            inniku paathalum nammaloada andha modhal love konjam kooda kuraiyama apdiye fresh-ah iruku... 🥰🌱
+            Aana neajama ina varum enku onu thrla, unkuda irukum pothu matum epdii antha relationship yrs aa thandi poguthu nu sathiyama thrla enku.. 🤷‍♀️💕 athuku reason ne ya ila nan nu enku thrla, but whatever atlast only US... 🫂🌸 7 varusham pochu nu sonna sathyama namba mudiyala, inniku paathalum nammaloada andha modhal love konjam kooda kuraiyama apdiye fresh-ah iruku... 🥰🌱
           </p>
           <p>
-            En manasula iruntha elathaum ithula solitan nan... ✍️🎈 indha screen-la irukura ovvoru single
-            photo-vum nammaloada gold memories dhaan. Idhu un moonji-la oru chinnha smile-ah thandha kooda
-            enaku adhu thaan big success. 😊💖 Intha gift Unku pudikuma pudikathunu kuda enku theriyathu,
-            enku unakaga eathavathu pannaum nu thonuchii so pandrn eatho enala mudichathu... 🎁💫
-            Once again Happy Birthday Ammu... 🎂🎉 love you and You are My Everything.... ♾️💝🔐
+            En manasula iruntha elathaum ithula solitan nan... ✍️🎈 indha screen-la irukura ovvoru single photo-vum nammaloada gold memories dhaan. Idhu un moonji-la oru chinnha smile-ah thandha kooda enaku adhu thaan big success. 😊💖 Intha gift Unku pudikuma pudikathunu kuda enku theriyathu, enku unakaga eathavathu pannaum nu thonuchii so pandrn eatho enala mudichathu... 🎁💫 Once again Happy Birthday Ammu... 🎂🎉 love you and You are My Everything.... ♾️💝🔐
           </p>
         </div>
 

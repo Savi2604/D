@@ -205,9 +205,9 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SCREEN 1 — INTRO / APOLOGY
+   SCREEN 1 & 2 — SHARED INTRO & APOLOGY STYLES
 ═══════════════════════════════════════════════════════════════════════ */
-#intro-screen {
+#intro-screen, #apology-screen {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,11 +277,75 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   SCREEN 1 — JOURNEY SEQUENCE
+═══════════════════════════════════════════════════════════════════════ */
+.journey-sequence-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.journey-step {
+  display: none;
+  animation: screenFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.journey-step.is-active {
+  display: block;
+}
+
+.progress-card {
+  background: var(--card);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow: 0 26px 58px var(--shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.progress-card.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-media {
+  width: 100%;
+}
+
+.journey-media {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 16px 32px rgba(34, 22, 16, 0.12);
+  object-fit: cover;
+  display: block;
+}
+
+.card-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-copy p {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #b85a50;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
    SHARED CTA BUTTON
 ═══════════════════════════════════════════════════════════════════════ */
 .cta-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 18px 44px;
   border: none;
@@ -297,6 +361,11 @@ body {
   box-shadow: 0 12px 36px rgba(255, 94, 135, 0.35);
   transition: background-position 0.4s ease, transform 0.25s ease, box-shadow 0.25s ease;
   animation: pulseCta 2.8s ease-in-out infinite;
+}
+
+.cta-btn--small {
+  padding: 14px 32px;
+  font-size: 0.95rem;
 }
 
 .cta-btn:hover {
@@ -320,7 +389,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SCREEN 2 — MEMORIES PHOTO GRID
+   SCREEN 3 — MEMORIES PHOTO GRID
 ═══════════════════════════════════════════════════════════════════════ */
 .memories-screen {
   background:
@@ -334,35 +403,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 64px 24px 80px;
-}
-
-.memories-header {
-  text-align: center;
-  margin-bottom: 56px;
-}
-
-.screen-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--peach);
-  margin-bottom: 12px;
-}
-
-.screen-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  color: #5a3830;
-  margin-bottom: 10px;
-  line-height: 1.2;
-}
-
-.screen-sub {
-  font-size: 0.95rem;
-  color: var(--muted);
-  letter-spacing: 0.02em;
 }
 
 /* ── Polaroid Grid ──────────────────────────────────────────── */
@@ -495,7 +535,7 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   SCREEN 3 — GRAND FINALE
+   SCREEN 4 — GRAND FINALE
 ═══════════════════════════════════════════════════════════════════════ */
 .final-screen {
   background:
@@ -587,22 +627,22 @@ body {
 
 /* ── Finale Letter ───────────────────────────────────────────── */
 .finale-letter {
-  max-width: 600px;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 22px;
-  padding: 40px 44px;
+  background: rgba(15, 10, 10, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 600px;
+  margin: 25px auto;
+  text-align: left;
   box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  margin-bottom: 32px;
 }
 
 .finale-letter p {
   font-family: 'Caveat', cursive;
   font-size: clamp(1.15rem, 2.8vw, 1.45rem);
-  color: rgba(255, 240, 230, 0.92);
+  color: #fff5f5;
   line-height: 1.9;
   margin-bottom: 28px;
   letter-spacing: 0.015em;
@@ -666,6 +706,7 @@ body {
 @media (max-width: 900px) {
   .polaroid-grid { gap: 40px 24px; }
   .finale-letter { padding: 30px 28px; }
+  .progress-card, .progress-card.reverse { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -674,4 +715,5 @@ body {
   .polaroid-grid  { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 36px 18px; }
   .finale-letter  { padding: 26px 20px; }
   .final-screen   { padding: 56px 16px 72px; }
+  .progress-card  { padding: 24px; }
 }

@@ -13,8 +13,10 @@
   const layer          = qs('#particle-layer');
   const lockScreen     = qs('#lock-screen');
   const introScreen    = qs('#intro-screen');
+  const apologyScreen  = qs('#apology-screen');
   const memoriesScreen = qs('#memories-screen');
   const finalScreen    = qs('#final-portrait-screen');
+  
   const secretInput    = qs('#secret-key');
   const unlockButton   = qs('#unlock-button');
   const lockError      = qs('#lock-error');
@@ -54,7 +56,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 1 — Intro / Apology
+     SCREEN 1 — Intro & Journey Sequence
   ═══════════════════════════════════════════════════════════════════ */
   function showIntroScreen() {
     introScreen.style.display = 'flex';
@@ -65,9 +67,9 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 2 — Memories Photo Grid (staggered slide-in)
+     SCREEN 2 — Apology Screen
   ═══════════════════════════════════════════════════════════════════ */
-  function showMemoriesScreen() {
+  function showApologyScreen() {
     /* Fade out intro */
     introScreen.style.opacity = '0';
     introScreen.style.transform = 'translateY(-18px)';
@@ -75,6 +77,23 @@
 
     window.setTimeout(() => {
       introScreen.style.display = 'none';
+
+      apologyScreen.style.display = 'flex';
+      apologyScreen.classList.add('screen-enter');
+    }, 500);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     SCREEN 3 — Memories Photo Grid (staggered slide-in)
+  ═══════════════════════════════════════════════════════════════════ */
+  function showMemoriesScreen() {
+    /* Fade out apology screen */
+    apologyScreen.style.opacity = '0';
+    apologyScreen.style.transform = 'translateY(-18px)';
+    apologyScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+    window.setTimeout(() => {
+      apologyScreen.style.display = 'none';
 
       memoriesScreen.style.display = 'block';
       memoriesScreen.classList.add('screen-enter');
@@ -90,7 +109,7 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 3 — Grand Finale + Music Trigger
+     SCREEN 4 — Grand Finale + Music Trigger
   ═══════════════════════════════════════════════════════════════════ */
   function showFinalScreen() {
     /* Fade out memories screen */
@@ -104,7 +123,7 @@
       finalScreen.style.display = 'flex';
       finalScreen.classList.add('screen-enter');
 
-      /* ── MUSIC TRIGGER — plays ONLY when Screen 3 activates ── */
+      /* ── MUSIC TRIGGER — plays ONLY when Screen 4 activates ── */
       if (bgMusic) {
         bgMusic.currentTime = 0;
         bgMusic.volume = 0.82;
@@ -256,13 +275,63 @@
       if (e.key === 'Enter') { e.preventDefault(); unlockExperience(); }
     });
 
-    /* Screen 1 → Screen 2 */
+    /* Screen 1: Intro -> Journey Sequence */
+    const openJourneyBtn = qs('#open-journey-btn');
+    if (openJourneyBtn) {
+      openJourneyBtn.addEventListener('click', () => {
+        const introStart = qs('#intro-start');
+        const journeySeq = qs('#journey-sequence');
+        
+        introStart.style.opacity = '0';
+        introStart.style.transform = 'translateY(-18px)';
+        introStart.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+
+        window.setTimeout(() => {
+          introStart.style.display = 'none';
+          journeySeq.style.display = 'block';
+          journeySeq.classList.add('screen-enter');
+        }, 400);
+      });
+    }
+
+    /* Screen 1: Journey Step transitions */
+    qsa('.j-next-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const currentStep = e.target.closest('.journey-step');
+        const targetId = e.target.getAttribute('data-target');
+        const nextStep = qs('#' + targetId);
+        
+        if (currentStep && nextStep) {
+          currentStep.style.opacity = '0';
+          currentStep.style.transform = 'translateY(-18px)';
+          currentStep.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          
+          window.setTimeout(() => {
+            currentStep.classList.remove('is-active');
+            currentStep.style.display = 'none';
+            currentStep.style.opacity = '';
+            currentStep.style.transform = '';
+
+            nextStep.style.display = 'block';
+            nextStep.classList.add('is-active', 'screen-enter');
+          }, 400);
+        }
+      });
+    });
+
+    /* Screen 1 → Screen 2 (Apology) */
+    const goToApologyBtn = qs('#go-to-apology-btn');
+    if (goToApologyBtn) {
+      goToApologyBtn.addEventListener('click', showApologyScreen);
+    }
+
+    /* Screen 2 → Screen 3 (Memories Grid) */
     const seeMemoriesBtn = qs('#see-memories-btn');
     if (seeMemoriesBtn) {
       seeMemoriesBtn.addEventListener('click', showMemoriesScreen);
     }
 
-    /* Screen 2 → Screen 3 */
+    /* Screen 3 → Screen 4 (Final Portrait) */
     const goToFinalBtn = qs('#go-to-final-btn');
     if (goToFinalBtn) {
       goToFinalBtn.addEventListener('click', showFinalScreen);
