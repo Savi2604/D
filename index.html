@@ -3,329 +3,263 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday Ammu</title>
+    <title>Happy Birthday Ammu 🧡</title>
     <meta name="description" content="A deeply personal birthday surprise for Devanandh (Ammu)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Preload bg music for instant play on final screen -->
     <link rel="preload" href="assets/neeyum_naanum.mp3" as="audio" type="audio/mpeg" />
   </head>
   <body>
+
+    <!-- Floating Particle Layer -->
     <div id="particle-layer" aria-hidden="true"></div>
     <div class="watermark">DS</div>
 
-    <!-- ═══════════════════ LOCK SCREEN ═══════════════════ -->
+    <!-- ═══════════════════════════════════════════════
+         LOCK SCREEN
+    ═══════════════════════════════════════════════ -->
     <div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
       <div class="lock-card">
         <p class="lock-eyebrow">Secret Access</p>
         <h1 id="lock-title">Enter our secret milestone date to unlock your birthday surprise 🔐</h1>
         <label class="lock-field" for="secret-key">
           <span class="sr-only">Secret key</span>
-          <input id="secret-key" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="DD-MM-YYYY" />
+          <input
+            id="secret-key"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="DD-MM-YYYY"
+          />
         </label>
         <button id="unlock-button" type="button">Unlock ✨</button>
         <p id="lock-error" class="lock-error" role="alert"></p>
       </div>
     </div>
 
-    <main class="page-shell">
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 1 — INTRO / APOLOGY
+    ═══════════════════════════════════════════════ -->
+    <div id="intro-screen" class="screen-layer" style="display:none;">
+      <div class="intro-inner">
+        <div class="intro-card">
+          <p class="intro-eyebrow">MY HEART TO YOURS 🤍✨</p>
+          <h2 class="intro-title">First nan SORRY solikiran... 🥺💔</h2>
 
-      <!-- ═══════════════════ HERO PANEL ═══════════════════ -->
-      <section class="hero-panel" id="hero-panel">
-        <div class="hero-card">
-          <div class="hero-copy">
-            <p class="eyebrow">A soft surprise for my Ammu</p>
-            <h1>Happy Birthday Ammu 🧡🤗</h1>
-            <p class="hero-text">A dreamy love journey, each memory a small light for you.</p>
-            <button class="hero-button" type="button">Open the journey</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════════ JOURNEY STEPS ═══════════════════ -->
-      <section class="journey-stage" id="journey-stage" aria-live="polite">
-        <article class="journey-step is-active" id="step-1">
-          <div class="progress-card">
-            <div class="card-media">
-              <img src="assets/school_days.jpg" alt="School spark" class="journey-media" />
-            </div>
-            <div class="card-copy">
-              <p class="eyebrow">Our School Bench Spark ✨</p>
-              <h2>School Bench Spark</h2>
-              <p>School days-la unna First Time paathadhu, appo arambicha namma conversations... Gnabagam iruka Ammu, enoda class pakathu class thaan unaku. Break-la naa pogum pothum varum pothum Papan una aana ne ena pakaraya ilaya nu enkea Theriyathu and then namba pakrom nu yarukumea  theriyathu apdii sight adipome! rendu perum....Athalam marakamudiyathu la..!</p>
-              <button class="next-button" data-target="step-2">Next Memory ✨ ➡️</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="journey-step" id="step-2">
-          <div class="progress-card reverse">
-            <div class="card-copy">
-              <p class="eyebrow">The Revision Exam &amp; Cake Cutting 🎂</p>
-              <h2>Revision Day &amp; Cake</h2>
-              <p>Namma last public exam revision apo, nee enaku exact-ah opposite-la thaan irundha. Nambala apdiye maari maari paathute irundhom, suthama padikave ila gnabagam iruka? Apram public exam mudunja last day, Enga veetuku cake vetta vandheenga... Apo thaan first time naan un pakathula ninnu photo eduthen. Andha cake-la 'D' pakathula 'S' nu irunthuchii ana nan pakala athaum neethan sona apo vanthu ena aachi na i think un mobile kanam..lap la enku txt panna enku nybkm iruku unku iruka...</p>
-              <button class="next-button" data-target="step-3">Next Memory ✨ ➡️</button>
-            </div>
-            <div class="card-media">
-              <img src="assets/anniversary.jpeg" alt="Cake cutting memory" class="journey-media" />
-            </div>
-          </div>
-        </article>
-
-        <article class="journey-step" id="step-3">
-          <div class="progress-card">
-            <div class="card-media">
-              <img src="assets/reconnect.jpg" alt="Melody touch and first hug" class="journey-media" />
-            </div>
-            <div class="card-copy">
-              <p class="eyebrow">The Melody Touch &amp; Our First Hug ❤️</p>
-              <h2>Melody &amp; That First Hug</h2>
-              <p>Oru naal en kaga nee bus-la last-aa eranguna... Apo thaan first time nee en kaiya touch panni, andha Melody chocolate vangi kudutha! And namba first hug... En birthday appo namma temple-ku poirundhom, enoda appa kooda vandhanga aana nee konjam kuda bayapadama kutitu pona ena....anga nee enaku oru keychain thandha, unna first time naan hug pannen! and athu than namloda first hug aana ipo paaru..apdiya irukom keta kuda tharamatra nee... Absolute best day of my life.</p>
-              <button class="next-button" data-target="step-4">Next Memory ✨ ➡️</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="journey-step" id="step-4">
-          <div class="love-msg-card">
-            <p class="eyebrow">What You Mean To Me 💌</p>
-            <h2 class="love-msg-title">Enku Una Avlo Pudikum😘🧡</h2>
-
-            <div class="msg-bubbles">
-              <div class="msg-bubble bubble-left">
-                <span class="bubble-emoji">🌙</span>
-                <p>Nee iruka pothum en oru maari happy aa jollu aa irukum..athu yen thrla may be ne ena roast panaratha irukalm ila romance panarathu like intha maari....Nan kovama irunthalum takkunu sirichiruvan unta yen nea theriyathu..una matum...</p>
-              </div>
-
-              <div class="msg-bubble bubble-right">
-                <span class="bubble-emoji">🧡</span>
-                <p>Ennaku Unta Peasa romba pudikum and then unkuda irukarathu atha vida pudikum..enku thrla enanu but unkuda literal aa 7 Yrs irunthurukan but naduvula sanda prblms nearaya vanthuruku But still we are Together always...</p>
-              </div>
-
-              <div class="msg-bubble bubble-left">
-                <span class="bubble-emoji">🫂</span>
-                <p>Enathan nee happy aa irunthalum or sad irunthalum atlast enta than varuva nee polambuva..aana una vida nan nearaya polambuvan..elathaum keapa nee samathamea ilama Sanda poduvan athaum sagichipa again neeyea sry keapa..but aana athalam nenaikum pothu ipovum enku siripu than varuthu..but anyways..Enku una romba romba romba pudikum...</p>
-              </div>
-
-              <div class="msg-bubble bubble-right">
-                <span class="bubble-emoji">✨</span>
-                <p>Life la nee enku irunthamaari yarumea irunthathu ila..your love never end for me...</p>
-              </div>
-
-              <div class="msg-bubble bubble-center">
-                <span class="bubble-emoji">❤️‍🔥</span>
-                <p>Dailumea nan unta nadantha soluvan neeum soluva..nearaya Stry peasuvom..But I know you still Love me but aana ena keata than solamatraa..Nee enakaga ellamea pandra aana ena Atha matum solamtra..lets see what will happens...But the END. <strong>I STILL LOVE YOU.</strong></p>
-              </div>
-            </div>
-
-            <button class="next-button" data-target="apology-screen">One More Feeling... 🥺➡️</button>
-          </div>
-        </article>
-      </section>
-
-      <!-- ═══════════════════ APOLOGY SCREEN ═══════════════════ -->
-      <div id="apology-screen" class="apology-overlay" style="display: none;">
-        <div class="aesthetic-card">
-          <p class="apology-eyebrow">MY HEART TO YOURS 🤍✨✨</p>
-
-          <div class="apology-body">
-            <p class="apology-highlight">First nan SORRY solikiran... 🥺💔</p>
-
-            <p>Eathukuna Nan una nearaya hurt panirukan aluthuruka enala. Ithukulam sry nu antha oru varthai la almea seriya poguma nu keata kandipa keadaiyathu... 😭💔❤️🩹</p>
-
-            <p>But enku ena panarathu nu thrla ,,, Still ipovum nearaya guilt iruku enkula atha epayavathu thonum pothu lam aluga vanthurum enku.. enku atha ena panarathu nu thrla.. ipavum but aana atha oru time untayea solli alunthan.. unku nybkm iruka nu thrla.. I Still remember that.. 🫂🥺❤️</p>
-
-            <p>Oru relationaship la panna kudathatha nan panirukan unaku athuu elamea enoda thappu than I Agreed for this 🩹😔</p>
-
-            <p class="apology-highlight">But ne ena again Love panuvaya nu thrla... Una romba naal kekanum nu nenachitu irukan ipo soluran... 🥺👉👈💖</p>
-
-            <p class="apology-highlight">Elathaum vitutu Again first la irunthu Love panalama..... Again nan una miss panna virumbala.. Enku therium but aana panna life nalarukum nu thonuthu... Unoda virupam... 🥹😭💞✨</p>
-
-            <p class="apology-highlight">Rombaa naala kekanum nu thonuchii so keatutan. Thappa iruntha sryy da... Love youuu endlessly... 🫂❤️😭🌎</p>
+          <div class="intro-body">
+            <p>
+              Eathukuna Nan una nearaya hurt panirukan aluthuruka enala.
+              Ithukulam sry nu antha oru varthai la almea seriya poguma nu keata
+              kandipa keadaiyathu... 😭💔❤️🩹
+            </p>
+            <p>
+              But enku ena panarathu nu thrla ,,, Still ipovum nearaya guilt iruku enkula
+              atha epayavathu thonum pothu lam aluga vanthurum enku.. enku atha ena panarathu
+              nu thrla.. ipavum but aana atha oru time untayea solli alunthan..
+              I Still remember that.. 🫂🥺❤️
+            </p>
+            <p>
+              Oru relationaship la panna kudathatha nan panirukan unaku athuu elamea
+              enoda thappu than I Agreed for this 🩹😔
+            </p>
+            <p class="intro-highlight">
+              But ne ena again Love panuvaya nu thrla... Una romba naal kekanum nu nenachitu
+              irukan ipo soluran... 🥺👉👈💖
+            </p>
+            <p class="intro-highlight">
+              Elathaum vitutu Again first la irunthu Love panalama..... Again nan una miss panna
+              virumbala.. Enku therium but aana panna life nalarukum nu thonuthu...
+              Unoda virupam... 🥹😭💞✨
+            </p>
+            <p class="intro-highlight">
+              Rombaa naala kekanum nu thonuchii so keatutan. Thappa iruntha sryy da...
+              Love youuu endlessly... 🫂❤️😭🌎
+            </p>
           </div>
 
-          <button id="apology-next-btn" class="unlock-btn" type="button">Click here to see the truth... 🗝️❤️</button>
+          <button id="see-memories-btn" class="cta-btn" type="button">
+            See Our Memories ❤️
+          </button>
         </div>
       </div>
+    </div>
 
-      <!-- ═══════════════════ PORTRAIT SCREEN ═══════════════════ -->
-      <section class="final-note-view" id="portrait-screen" aria-live="polite">
-        <div class="final-note-card">
-
-          <div class="cute-memories-container">
-
-            <!-- m-1 -->
-            <div class="memory-card-scene m-1">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/school_days.jpg" alt="School Days">
-                  <p class="front-title">School Days 🎒✨</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Enga arambichathu nu nyabagam iruka... 🌸</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-2 -->
-            <div class="memory-card-scene m-2">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/reconnect.jpg" alt="Reconnected">
-                  <p class="front-title">Reconnected... 🥺💞</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Mupadiyum nama pesuna andha gold moments! ✨</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-3 -->
-            <div class="memory-card-scene m-3">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/our_days.jpeg" alt="Our Days">
-                  <p class="front-title">Beautiful Days... ❤️</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Enakku romba pudicha oru safe comfort zone... 🫶</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-4 -->
-            <div class="memory-card-scene m-4">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/special_day.jpeg" alt="Special Day">
-                  <p class="front-title">Special Day ✨</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Indha naal eppadume en nenjula thoorum! 💖</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-5 -->
-            <div class="memory-card-scene m-5">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/unseen_pic.jpg" alt="Favorite Laugh">
-                  <p class="front-title">Favorite Laugh 👑❤️</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Un sirippu mattum podhum, ella guilt-um maraiyum. 🌼</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-6 -->
-            <div class="memory-card-scene m-6">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/bond_accent.jpg" alt="Our Bond">
-                  <p class="front-title">Our Bond... 🫂</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Yaralayu udaika mudiyatha namma string logic. 🔗</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-7 -->
-            <div class="memory-card-scene m-7">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/holding_hands.jpeg" alt="Holding Hands">
-                  <p class="front-title">Holding Hands 🔗❤️</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Kadaisi varaikum indha kaiya vidama irupiya? 🤝</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-8 -->
-            <div class="memory-card-scene m-8">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/safe_place.jpeg" alt="Safe Place">
-                  <p class="front-title">Safe Place 🏡✨</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Un kooda irukum podhu kedaikura nimmadhimaye thani! 🕊️</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-9 -->
-            <div class="memory-card-scene m-9">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/together_forever.jpeg" alt="Forever">
-                  <p class="front-title">Forever... ♾️</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Enna aanalum un pinnadiye varuven da... 💫</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-10 -->
-            <div class="memory-card-scene m-10">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/anniversary.jpeg" alt="Anniversary Milestone">
-                  <p class="front-title">Milestone 📅💖</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Kaalam poora indha memories ah kondaadanum! 🎊</p></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- m-11 -->
-            <div class="memory-card-scene m-11">
-              <div class="memory-card-inner">
-                <div class="card-face card-front">
-                  <div class="washi-tape-sticker"></div>
-                  <img src="assets/azahga_iruka_da.jpeg" alt="Azahga iruka da">
-                  <p class="front-title">Azahga iruka da... 🥰</p>
-                </div>
-                <div class="card-face card-back">
-                  <div class="handwritten-note"><p>Sathyama pathukitte irukalaam pola thonum! 😭🌎</p></div>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- /.cute-memories-container -->
-
-          <div class="centerpiece-frame">
-            <img src="assets/fav_potrait.jpeg" id="final-portrait-pic" alt="Centerpiece Portrait">
-            <h2 class="romantic-title">Nee Vendumey... ♾️❤️</h2>
-          </div>
-
-          <div id="music-hint" role="status">
-            <span>🎵 Play our song</span>
-            <button id="music-hint-btn" type="button">Play ▶</button>
-          </div>
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 2 — MEMORIES PHOTO GRID
+    ═══════════════════════════════════════════════ -->
+    <div id="memories-screen" class="screen-layer memories-screen" style="display:none;">
+      <div class="memories-wrapper">
+        <div class="memories-header">
+          <p class="screen-eyebrow">Our Beautiful Memories 📸</p>
+          <h2 class="screen-title">Every Frame, A Feeling 🌸</h2>
+          <p class="screen-sub">Click a memory to feel it again...</p>
         </div>
-      </section>
-    </main>
 
-    <!-- Invisible Audio node -->
+        <div class="polaroid-grid">
+
+          <div class="polaroid-card p-1">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/school_days.jpg" alt="School Days" />
+            </div>
+            <p class="polaroid-title">School Days 🎒✨</p>
+            <p class="polaroid-sub">Enga arambichathu nu nyabagam iruka...</p>
+          </div>
+
+          <div class="polaroid-card p-2">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/reconnect.jpg" alt="Reconnected" />
+            </div>
+            <p class="polaroid-title">Reconnected... 🥺💞</p>
+            <p class="polaroid-sub">Mupadiyum nama pesuna andha gold moments!</p>
+          </div>
+
+          <div class="polaroid-card p-3">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/our_days.jpeg" alt="Our Days" />
+            </div>
+            <p class="polaroid-title">Beautiful Days... ❤️</p>
+            <p class="polaroid-sub">Enakku romba pudicha oru safe comfort zone...</p>
+          </div>
+
+          <div class="polaroid-card p-4">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/special_day.jpeg" alt="Special Day" />
+            </div>
+            <p class="polaroid-title">Special Day ✨</p>
+            <p class="polaroid-sub">Indha naal eppadume en nenjula thoorum!</p>
+          </div>
+
+          <div class="polaroid-card p-5">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/unseen_pic.jpg" alt="Favorite Laugh" />
+            </div>
+            <p class="polaroid-title">Favorite Laugh 👑❤️</p>
+            <p class="polaroid-sub">Un sirippu mattum podhum, ella guilt-um maraiyum.</p>
+          </div>
+
+          <div class="polaroid-card p-6">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/bond_accent.jpg" alt="Our Bond" />
+            </div>
+            <p class="polaroid-title">Our Bond... 🫂</p>
+            <p class="polaroid-sub">Yaralayu udaika mudiyatha namma string logic.</p>
+          </div>
+
+          <div class="polaroid-card p-7">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/holding_hands.jpeg" alt="Holding Hands" />
+            </div>
+            <p class="polaroid-title">Holding Hands 🔗❤️</p>
+            <p class="polaroid-sub">Kadaisi varaikum indha kaiya vidama irupiya?</p>
+          </div>
+
+          <div class="polaroid-card p-8">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/safe_place.jpeg" alt="Safe Place" />
+            </div>
+            <p class="polaroid-title">Safe Place 🏡✨</p>
+            <p class="polaroid-sub">Un kooda irukum podhu kedaikura nimmadhimaye thani!</p>
+          </div>
+
+          <div class="polaroid-card p-9">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/together_forever.jpeg" alt="Forever" />
+            </div>
+            <p class="polaroid-title">Forever... ♾️</p>
+            <p class="polaroid-sub">Enna aanalum un pinnadiye varuven da...</p>
+          </div>
+
+          <div class="polaroid-card p-10">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/anniversary.jpeg" alt="Anniversary" />
+            </div>
+            <p class="polaroid-title">Our Milestone 📅💖</p>
+            <p class="polaroid-sub">Kaalam poora indha memories ah kondaadanum!</p>
+          </div>
+
+          <div class="polaroid-card p-11">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/azahga_iruka_da.jpeg" alt="Azahga iruka da" />
+            </div>
+            <p class="polaroid-title">Azahga iruka da... 🥰</p>
+            <p class="polaroid-sub">Sathyama pathukitte irukalaam pola thonum!</p>
+          </div>
+
+        </div><!-- /.polaroid-grid -->
+
+        <div class="memories-footer">
+          <button id="go-to-final-btn" class="cta-btn cta-btn--warm" type="button">
+            Our Forever Room ✨
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 3 — GRAND FINALE
+    ═══════════════════════════════════════════════ -->
+    <div id="final-portrait-screen" class="screen-layer final-screen" style="display:none;">
+      <div class="final-wrapper">
+
+        <div class="portrait-glow-wrap">
+          <div class="portrait-glow-halo"></div>
+          <img
+            src="assets/fav_potrait.jpeg"
+            alt="My Favorite Portrait"
+            class="portrait-img"
+          />
+        </div>
+
+        <h2 class="romantic-finale-title">Nee Vendumey... ♾️❤️</h2>
+
+        <div class="finale-letter">
+          <p>
+            Ammu... 💖 enku yen intha pic avlo pudichirukunu thrla.. 🥺 ithuku paakum pothu oru maari
+            nalla feel aa aguthu... and then may be namba intha maari pic eduthathy ila nu nenakirn
+            like intha mari kaiya pudichitu... 🤝✨ literal aa 7 yrs achi neeum nanum peasa aaramichii...
+            Still we are together.. ♾️❤️
+          </p>
+          <p>
+            Aana neajama ina varum enku onu thrla, unkuda irukum pothu matum epdii antha relationship
+            yrs aa thandi poguthu nu sathiyama thrla enku.. 🤷‍♀️💕 athuku reason ne ya ila nan nu enku thrla,
+            but whatever atlast only US... 🫂🌸 7 varusham pochu nu sonna sathyama namba mudiyala,
+            inniku paathalum nammaloada andha modhal love konjam kooda kuraiyama apdiye fresh-ah iruku... 🥰🌱
+          </p>
+          <p>
+            En manasula iruntha elathaum ithula solitan nan... ✍️🎈 indha screen-la irukura ovvoru single
+            photo-vum nammaloada gold memories dhaan. Idhu un moonji-la oru chinnha smile-ah thandha kooda
+            enaku adhu thaan big success. 😊💖 Intha gift Unku pudikuma pudikathunu kuda enku theriyathu,
+            enku unakaga eathavathu pannaum nu thonuchii so pandrn eatho enala mudichathu... 🎁💫
+            Once again Happy Birthday Ammu... 🎂🎉 love you and You are My Everything.... ♾️💝🔐
+          </p>
+        </div>
+
+        <div id="music-hint" role="status" style="display:none;">
+          <span>🎵 Play our song</span>
+          <button id="music-hint-btn" type="button">Play ▶</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Background Music -->
     <audio id="romantic-finale-track" src="assets/neeyum_naanum.mp3" loop></audio>
 
     <script src="js/main.js"></script>

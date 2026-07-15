@@ -12,44 +12,20 @@
   ═══════════════════════════════════════════════════════════════════ */
   const layer          = qs('#particle-layer');
   const lockScreen     = qs('#lock-screen');
-  const heroPanel      = qs('#hero-panel');
-  const journeyStage   = qs('#journey-stage');
-  const apologyScreen  = qs('#apology-screen');
-  const portraitScreen = qs('#portrait-screen');
+  const introScreen    = qs('#intro-screen');
+  const memoriesScreen = qs('#memories-screen');
+  const finalScreen    = qs('#final-portrait-screen');
   const secretInput    = qs('#secret-key');
   const unlockButton   = qs('#unlock-button');
   const lockError      = qs('#lock-error');
   const bgMusic        = qs('#romantic-finale-track');
-  const acceptedKeys   = ['04-09-2022', '4-9-2022'];
+
+  /* Accepted unlock keys */
+  const acceptedKeys = ['04-09-2022', '4-9-2022'];
 
   /* ═══════════════════════════════════════════════════════════════════
-     STEP / VIEW SEQUENCING
+     LOCK SCREEN — Validate date and transition to Screen 1
   ═══════════════════════════════════════════════════════════════════ */
-  function clearStepView() {
-    qsa('.journey-step').forEach((s) => s.classList.remove('is-active'));
-  }
-
-  function showStep(stepId) {
-    clearStepView();
-    const target = qs('#' + stepId);
-    if (target) {
-      target.classList.add('is-active');
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  function openJourney() {
-    heroPanel.classList.add('is-hidden');
-    heroPanel.style.display = 'none';
-    journeyStage.style.display = 'block';
-    journeyStage.classList.add('is-visible');
-    clearStepView();
-    showStep('step-1');
-    portraitScreen.classList.remove('is-active');
-    portraitScreen.style.display = 'none';
-    apologyScreen.style.display = 'none';
-  }
-
   function unlockExperience() {
     const raw  = secretInput.value.trim();
     const norm = raw.toLowerCase().replace(/\s+/g, '');
@@ -69,65 +45,75 @@
 
     lockError.textContent = '';
     lockScreen.classList.add('is-hidden');
-    heroPanel.classList.remove('is-hidden');
-    heroPanel.style.display = 'grid';
-    window.setTimeout(() => { lockScreen.style.display = 'none'; }, 700);
+
+    /* After lock fades out → show Screen 1 */
+    window.setTimeout(() => {
+      lockScreen.style.display = 'none';
+      showIntroScreen();
+    }, 650);
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     APOLOGY SCREEN — Show the white aesthetic card
-     NO music plays here — silence for emotional reading
+     SCREEN 1 — Intro / Apology
   ═══════════════════════════════════════════════════════════════════ */
-  function showApologyScreen() {
-    journeyStage.style.display = 'none';
-    journeyStage.classList.remove('is-visible');
-    clearStepView();
+  function showIntroScreen() {
+    introScreen.style.display = 'flex';
+    introScreen.classList.add('screen-enter');
 
-    apologyScreen.style.display = 'grid';
-    apologyScreen.style.zIndex = '18';
-
-    /* Launch antigravity engine so it floats behind the apology screen */
+    /* Start floating particles in the background */
     initAntigravityEngine();
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     PORTRAIT SCREEN — Fade out apology, reveal portrait + music
-     a) Smooth fade-out of apology card
-     b) Show portrait screen
-     c) Auto-play romantic-finale-track from t=0
-     d) Launch antigravity particle engine
+     SCREEN 2 — Memories Photo Grid (staggered slide-in)
   ═══════════════════════════════════════════════════════════════════ */
-  function showPortraitScreen() {
-    /* Auto-play audio at the exact click moment to satisfy browser autoplay policy */
-    if (bgMusic) {
-      bgMusic.currentTime = 0;
-      bgMusic.volume = 0.85;
-      bgMusic.play().catch(() => {
-        const hint = qs('#music-hint');
-        if (hint) hint.style.display = 'flex';
-      });
-    }
-
-    apologyScreen.classList.add('fade-out');
+  function showMemoriesScreen() {
+    /* Fade out intro */
+    introScreen.style.opacity = '0';
+    introScreen.style.transform = 'translateY(-18px)';
+    introScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 
     window.setTimeout(() => {
-      apologyScreen.style.display = 'none';
-      apologyScreen.classList.remove('fade-out');
+      introScreen.style.display = 'none';
 
-      portraitScreen.style.display = 'grid';
-      portraitScreen.classList.add('is-active');
-      portraitScreen.style.zIndex = '18';
+      memoriesScreen.style.display = 'block';
+      memoriesScreen.classList.add('screen-enter');
 
-      /* ── Staggered Instant-Camera slide-in for each polaroid card ── */
-      const cards = qsa('.memory-card-scene');
+      /* Staggered Instant-Camera slide-in for each polaroid */
+      const cards = qsa('.polaroid-card');
       cards.forEach((card, i) => {
         window.setTimeout(() => {
           card.classList.add('is-visible');
-        }, 120 + i * 110);
+        }, 80 + i * 120);
       });
+    }, 500);
+  }
 
-      /* Launch antigravity engine (no-op if already running) */
-      initAntigravityEngine();
+  /* ═══════════════════════════════════════════════════════════════════
+     SCREEN 3 — Grand Finale + Music Trigger
+  ═══════════════════════════════════════════════════════════════════ */
+  function showFinalScreen() {
+    /* Fade out memories screen */
+    memoriesScreen.style.opacity = '0';
+    memoriesScreen.style.transform = 'translateY(-18px)';
+    memoriesScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+    window.setTimeout(() => {
+      memoriesScreen.style.display = 'none';
+
+      finalScreen.style.display = 'flex';
+      finalScreen.classList.add('screen-enter');
+
+      /* ── MUSIC TRIGGER — plays ONLY when Screen 3 activates ── */
+      if (bgMusic) {
+        bgMusic.currentTime = 0;
+        bgMusic.volume = 0.82;
+        bgMusic.play().catch(() => {
+          /* Autoplay blocked by browser — show fallback button */
+          const hint = qs('#music-hint');
+          if (hint) hint.style.display = 'flex';
+        });
+      }
     }, 500);
   }
 
@@ -136,12 +122,13 @@
   ═══════════════════════════════════════════════════════════════════ */
   let cursorX = -9999;
   let cursorY = -9999;
+
   document.addEventListener('mousemove', (e) => {
     cursorX = e.clientX;
     cursorY = e.clientY;
   });
 
-  const ICON_POOL = ['🩷','🩷','🩷','🧡','🧡','🧡','🦋','🦋','✨'];
+  const ICON_POOL = ['🩷','🩷','🩷','🧡','🧡','🧡','🦋','🦋','✨','✨','🌸','💞'];
 
   const GRAVITY       = -0.016;
   const DRAG          = 0.991;
@@ -219,9 +206,8 @@
 
       p.vx *= DRAG;
       p.vy *= DRAG;
-
-      p.vx = Math.max(-MAX_VX, Math.min(MAX_VX, p.vx));
-      p.vy = Math.max(-MAX_VY, Math.min(MAX_VY, p.vy));
+      p.vx  = Math.max(-MAX_VX, Math.min(MAX_VX, p.vx));
+      p.vy  = Math.max(-MAX_VY, Math.min(MAX_VY, p.vy));
 
       p.x += p.vx;
       p.y += p.vy;
@@ -260,50 +246,29 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     BOOT
+     BOOT — Wire up all event listeners on DOMContentLoaded
   ═══════════════════════════════════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
-    /* Initial display state */
-    heroPanel.classList.remove('is-hidden');
-    heroPanel.style.display = 'grid';
-    journeyStage.classList.remove('is-visible');
-    journeyStage.style.display = 'none';
-    portraitScreen.classList.remove('is-active');
-    portraitScreen.style.display = 'none';
-    apologyScreen.style.display = 'none';
-    clearStepView();
 
-    /* Hero → Journey */
-    qs('.hero-button').addEventListener('click', openJourney);
-
-    /* Journey next buttons */
-    qsa('.next-button').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-target');
-        if (!target) return;
-        if (target === 'apology-screen') {
-          showApologyScreen();
-        } else {
-          showStep(target);
-        }
-      });
+    /* Lock screen controls */
+    unlockButton.addEventListener('click', unlockExperience);
+    secretInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); unlockExperience(); }
     });
 
-    /* Apology → Portrait transition */
-    const apologyBtn = qs('#apology-next-btn');
-    if (apologyBtn) {
-      apologyBtn.addEventListener('click', showPortraitScreen);
+    /* Screen 1 → Screen 2 */
+    const seeMemoriesBtn = qs('#see-memories-btn');
+    if (seeMemoriesBtn) {
+      seeMemoriesBtn.addEventListener('click', showMemoriesScreen);
     }
 
-    /* ── Click-to-Flip: toggle .is-flipped on every polaroid inner card ── */
-    qsa('.memory-card-inner').forEach((inner) => {
-      inner.addEventListener('click', () => {
-        inner.classList.toggle('is-flipped');
-      });
-    });
+    /* Screen 2 → Screen 3 */
+    const goToFinalBtn = qs('#go-to-final-btn');
+    if (goToFinalBtn) {
+      goToFinalBtn.addEventListener('click', showFinalScreen);
+    }
 
-
-    /* Music fallback button */
+    /* Music fallback button (shown if autoplay blocked) */
     const musicHintBtn = qs('#music-hint-btn');
     if (musicHintBtn && bgMusic) {
       musicHintBtn.addEventListener('click', () => {
@@ -312,12 +277,6 @@
         if (hint) hint.style.display = 'none';
       });
     }
-
-    /* Lock screen */
-    unlockButton.addEventListener('click', unlockExperience);
-    secretInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') { e.preventDefault(); unlockExperience(); }
-    });
   });
 
 })();
