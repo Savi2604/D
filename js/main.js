@@ -98,7 +98,7 @@
      d) Launch antigravity particle engine
   ═══════════════════════════════════════════════════════════════════ */
   function showPortraitScreen() {
-    /* Auto-play audio from the very beginning, at the exact millisecond of transition start */
+    /* Auto-play audio at the exact click moment to satisfy browser autoplay policy */
     if (bgMusic) {
       bgMusic.currentTime = 0;
       bgMusic.volume = 0.85;
@@ -117,6 +117,14 @@
       portraitScreen.style.display = 'grid';
       portraitScreen.classList.add('is-active');
       portraitScreen.style.zIndex = '18';
+
+      /* ── Staggered Instant-Camera slide-in for each polaroid card ── */
+      const cards = qsa('.memory-card-scene');
+      cards.forEach((card, i) => {
+        window.setTimeout(() => {
+          card.classList.add('is-visible');
+        }, 120 + i * 110);
+      });
 
       /* Launch antigravity engine (no-op if already running) */
       initAntigravityEngine();
@@ -287,6 +295,12 @@
       apologyBtn.addEventListener('click', showPortraitScreen);
     }
 
+    /* ── Click-to-Flip: toggle .is-flipped on every polaroid inner card ── */
+    qsa('.memory-card-inner').forEach((inner) => {
+      inner.addEventListener('click', () => {
+        inner.classList.toggle('is-flipped');
+      });
+    });
 
 
     /* Music fallback button */
