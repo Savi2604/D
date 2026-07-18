@@ -121,13 +121,32 @@
     </div>
 
     <!-- Hidden Audio Player -->
-    <audio id="deal-audio" class="audio-hidden" src="assets/kathal_cricket.mp3" autoplay loop></audio>
+    <audio id="deal-audio" class="audio-hidden" src="assets/kathal_cricket.mp3" loop></audio>
 
     <script>
-      // Try to autoplay audio
+      // Audio playback with user interaction
       const audio = document.getElementById('deal-audio');
-      audio.play().catch(() => {
-        console.log('Autoplay blocked - user interaction required');
+      let audioStarted = false;
+
+      function startAudio() {
+        if (!audioStarted) {
+          audio.play().then(() => {
+            audioStarted = true;
+            console.log('Audio started');
+          }).catch(err => {
+            console.log('Audio play failed:', err);
+          });
+        }
+      }
+
+      // Try autoplay first
+      audio.play().then(() => {
+        audioStarted = true;
+      }).catch(() => {
+        // If autoplay blocked, start on first click anywhere
+        document.body.addEventListener('click', startAudio, { once: true });
+        document.body.addEventListener('touchstart', startAudio, { once: true });
+        console.log('Click anywhere to start audio');
       });
     </script>
   </body>
