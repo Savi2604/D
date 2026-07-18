@@ -3,151 +3,400 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oru Chinna Deal... 😉✨</title>
-    <meta name="description" content="A jolly and romantic deal page" />
+    <title>Happy Birthday Ammu 🧡</title>
+    <meta name="description" content="A deeply personal birthday surprise for Devanandh (Ammu)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Poppins', sans-serif;
-        min-height: 100vh;
-        background:
-          radial-gradient(circle at 30% 20%, rgba(255, 218, 185, 0.4), transparent 45%),
-          radial-gradient(circle at 70% 80%, rgba(255, 182, 193, 0.35), transparent 45%),
-          linear-gradient(140deg, #fff9f0 0%, #fff5f7 50%, #fffef5 100%);
-        padding: 40px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .container {
-        max-width: 700px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.94);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-radius: 32px;
-        padding: 56px 52px;
-        box-shadow:
-          0 40px 80px rgba(255, 180, 150, 0.18),
-          0 0 0 1px rgba(255, 200, 180, 0.5);
-        text-align: center;
-      }
-
-      .title {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 700;
-        color: #d46a6a;
-        margin-bottom: 40px;
-        line-height: 1.3;
-      }
-
-      .main-story {
-        font-size: 1.1rem;
-        color: #6b4a4a;
-        line-height: 1.9;
-        margin-bottom: 32px;
-        text-align: left;
-      }
-
-      .questions-box {
-        background: linear-gradient(135deg, rgba(255, 220, 210, 0.5), rgba(255, 230, 220, 0.3));
-        border-radius: 20px;
-        border: 2px solid rgba(255, 180, 160, 0.5);
-        box-shadow: 0 8px 24px rgba(255, 160, 140, 0.15);
-        padding: 28px;
-        margin-bottom: 0;
-      }
-
-      .question {
-        font-size: 1.3rem;
-        color: #d46a6a;
-        line-height: 2.2;
-        margin-bottom: 16px;
-        font-weight: 600;
-        text-align: center;
-      }
-
-      .question:last-child {
-        margin-bottom: 0;
-      }
-
-      .audio-hidden {
-        display: none;
-      }
-
-      @media (max-width: 640px) {
-        .container {
-          padding: 36px 22px;
-        }
-
-        .title {
-          font-size: 1.8rem;
-        }
-
-        .main-story {
-          font-size: 1rem;
-        }
-
-        .question {
-          font-size: 1.1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css?v=2" />
+    <link rel="preload" href="assets/neeyum_naanum.mp3" as="audio" type="audio/mpeg" />
   </head>
   <body>
-    <div class="container">
-      <h1 class="title">Oru Chinna Deal... 😉✨</h1>
 
-      <p class="main-story">
-        Unkulam manasaatchiye ilaya man?! 🤨🙄 Nanum ethanavati thaan unku propose panarathu..othukavea matra...over aa pandra da nee aana...irunthalum... ✨💖 Enku una evlo pudikum nu unkum therium...unkuum ena pudikum nu enkum therium..ena solathan da matra..nee..irukatum irukatum pathukaran una... ok... 😌💭 Namba evlo evlo sanda potalum..athaey alavuku bayangrama roast panipom nambalea...mukiyama nan ethavathu polmabum poguthuthan unku siripu varum neeum siripa nalla apo varum paaru enku kovam apdiye unku thokitu potu methikalam nu irukum..enku.. 🏃‍♂️💨💨 Serii lv pandrana payana poitanu vituruvan...aprm ne feelings aa eathavthu sola varuva nanum sirichiruvan..epo na intha enku una pudikum like intha mari lam solum pothum nan hmmm nu soluvan nee kovapatu solavea matan d nu sollu..aprm apdiyea sirichitu ...vituruvom.. 🤭😂 again nan boys yaravathu pathi peasum pothu unku possive aagum..aprm ena verupatheney ne ethavathu sollu..intha maari nesrays iruku aprm una thambii..or bro nu solum pothu neum kova pattu sis nu soluva..again siripom.. 🤣🙈 but intha 1 yr la sanda pothu kammi than..atha thandi namba fun aa jly aa irunthurukom...and i love this always... ❤️🌹✨
-      </p>
+    <!-- Floating Particle Layer -->
+    <div id="particle-layer" aria-hidden="true"></div>
+    <div class="watermark">DS</div>
 
-      <div class="questions-box">
-        <p class="question">Enna Senja Othukuva..? 🧐🤔</p>
-        <p class="question">Enna Ne Eppo Eathukuvaaa..? 💌🥰</p>
+    <!-- ═══════════════════════════════════════════════
+         LOCK SCREEN
+    ═══════════════════════════════════════════════ -->
+    <div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+      <div class="lock-card">
+        <p class="lock-eyebrow">Secret Access</p>
+        <h1 id="lock-title">Enter our secret milestone date to unlock your birthday surprise 🔐</h1>
+        <label class="lock-field" for="secret-key">
+          <span class="sr-only">Secret key</span>
+          <input
+            id="secret-key"
+            type="text"
+            inputmode="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="DD-MM-YYYY"
+          />
+        </label>
+        <button id="unlock-button" type="button">Unlock ✨</button>
+        <p id="lock-error" class="lock-error" role="alert"></p>
       </div>
     </div>
 
-    <!-- Hidden Audio Player -->
-    <audio id="deal-audio" class="audio-hidden" src="assets/kathal_cricket.mp3" loop></audio>
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 1 — INTRO / JOURNEY
+    ═══════════════════════════════════════════════ -->
+    <div id="intro-screen" class="screen-layer" style="display:none;">
+      
+      <!-- Initial State -->
+      <div id="intro-start" class="intro-inner">
+        <div class="intro-card">
+          <h2 class="intro-title">Enaku una Romba Pudikum... ❤️</h2>
+          <button id="open-journey-btn" class="cta-btn" type="button">
+            Open the Journey ✨
+          </button>
+        </div>
+      </div>
 
-    <script>
-      // Audio playback with user interaction
-      const audio = document.getElementById('deal-audio');
-      let audioStarted = false;
+      <!-- Journey Sequence -->
+      <div id="journey-sequence" class="journey-sequence-wrapper" style="display:none;">
+        
+        <!-- Memory 1 -->
+        <article class="journey-step is-active" id="j-step-1">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/school_days.jpg" alt="Memory 1" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: journey_1.jpg</text></svg>'" />
+            </div>
+            <div class="card-copy">
+              <p>First time nan una enga v2la than pathan.. 🏡 rahul ooda vanthurunthaa... actual aa namba avanuku than thanks solanum 🙏 yen na avanalathan namba peasavea aaramichom 💬 and then apdiyea number aa vangii peasa aaramichom... 📱 athuku aprm online class vechitanga 💻 apo vanthu oru naal oru challenge panom unku nybkm irukanu thrla but iruku.. apo vanthu bed katunom 2 du perum eve varaum peasakudathunu 🤫 aana n8 rendum perum wt pannom epo da peasuvom nu... 🥺 aprm few days aprm ne enku propose panna 💍 nanum accept pannan.. love panna start pannom.. ❤️ anga aaramichiichathu.. ithu... and then sight adika aaramichom 👀 ithula ena na break nan varathey una pakathan 🥰 nalla una vedika paathutu povan nee um ena papaa aana ena enku than theriyathu... neeum nalla ena sight aadipa... 😍 last 12th public apo che exam enku unku acc nu nenakiran apo vanthu en class ku opp la okanthu kita nalla vedika pathom 😂 un frds lam seriyana kaandu aaitanga.... 🌸</p>
+              <button class="j-next-btn cta-btn cta-btn--small" data-target="j-step-2">Next Memory ✨ ➡️</button>
+            </div>
+          </div>
+        </article>
 
-      function startAudio() {
-        if (!audioStarted) {
-          audio.play().then(() => {
-            audioStarted = true;
-            console.log('Audio started');
-          }).catch(err => {
-            console.log('Audio play failed:', err);
-          });
-        }
-      }
+        <!-- Memory 2 -->
+        <article class="journey-step" id="j-step-2" style="display:none;">
+          <div class="progress-card reverse">
+            <div class="card-copy">
+              <p>Athuku aprm ena schl mudinchii last exam last day cake vetta vanthangeega elarum enga v2ku munadii.. 🎂 apo cake la d pakathula s irunthuchii aana nan atha pakala 😅 aprm nee than sona enta.. nan than apdii potan.. nu 🥰 aprm konjam naal aprm nearaya sanda potom 😤 peasitu than irnthom apavum.. but aana antha 2 yrs la una d nu sola vekka kaatiume enku pothu pothu nu aairum theriuma.. 🫠 aana ipo siruu atha matum than soldringa continously.. 😂 but apolam sanda matum vanthuchii na una samathanam pdathurathu romba kastam 😩 aana ipo apdii ila romba maarita da nee ✨ first enalam thappu panayo ipo athalam panala.. may be athanalathan enku una inum pudika aramichiruchoo enamoo.. thrla... 🥰❤️</p>
+              <button class="j-next-btn cta-btn cta-btn--small" data-target="j-step-3">Next Memory ✨ ➡️</button>
+            </div>
+            <div class="card-media">
+              <img src="assets/anniversary.jpeg" alt="Memory 2" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: anniversary.jpeg</text></svg>'" />
+            </div>
+          </div>
+        </article>
 
-      // Try autoplay first
-      audio.play().then(() => {
-        audioStarted = true;
-      }).catch(() => {
-        // If autoplay blocked, start on first click anywhere
-        document.body.addEventListener('click', startAudio, { once: true });
-        document.body.addEventListener('touchstart', startAudio, { once: true });
-        console.log('Click anywhere to start audio');
-      });
-    </script>
+        <!-- Memory 3 -->
+        <article class="journey-step" id="j-step-3" style="display:none;">
+          <div class="progress-card">
+            <div class="card-media">
+              <img src="assets/reconnect.jpg" alt="Memory 3" class="journey-media" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffece6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Inter%22 font-size=%2220%22 fill=%22%23666%22>Missing: journey_3.jpg</text></svg>'" />
+            </div>
+            <div class="card-copy">
+              <p>Enoda sec bd ku namba koviluku ponom 🛕 apo enga appa vum kuda vanthanga aana nee athalam yosikavea ila kutitu vanthuta ena 🥺 nee patuku aprm poitu saami lam kumbutu keychain onu gift panna 🎁 apo than first time hug pannom.. la.. 🫂 After ithuku aprm than namba breakup pannom... 💔 2 yrs gap aprm again en bd ku peasa aaramichom 📞 nadvula nearay nadanthuchii ena panarathu aprm.. forgot the past avlothan..... ✨🫂</p>
+              <button id="go-to-apology-btn" class="cta-btn cta-btn--warm">See More ❤️</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 2 — APOLOGY SCREEN
+    ═══════════════════════════════════════════════ -->
+    <div id="apology-screen" class="screen-layer" style="display:none;">
+      <div class="intro-inner">
+        <div class="intro-card">
+          <p class="intro-eyebrow">MY HEART TO YOURS 🤍✨</p>
+          <h2 class="intro-title">First nan SORRY solikiran... 🥺💔</h2>
+
+          <div class="intro-body">
+            <p>
+              Eathukuna Nan una nearaya hurt panirukan aluthuruka enala.
+              Ithukulam sry nu antha oru varthai la almea seriya poguma nu keata
+              kandipa keadaiyathu... 😭💔❤️🩹
+            </p>
+            <p>
+              But enku ena panarathu nu thrla ,,, Still ipovum nearaya guilt iruku enkula
+              atha epayavathu thonum pothu lam aluga vanthurum enku.. enku atha ena panarathu
+              nu thrla.. ipavum but aana atha oru time untayea solli alunthan..
+              I Still remember that.. 🫂🥺❤️
+            </p>
+            <p>
+              Oru relationaship la panna kudathatha nan panirukan unaku athuu elamea
+              enoda thappu than I Agreed for this 🩹😔
+            </p>
+            <p class="intro-highlight">
+              But ne ena again Love panuvaya nu thrla... Una romba naal kekanum nu nenachitu
+              irukan ipo soluran... 🥺👉👈💖
+            </p>
+            <p class="intro-highlight">
+              Elathaum vitutu Again first la irunthu Love panalama..... Again nan una miss panna
+              virumbala.. Enku therium but aana panna life nalarukum nu thonuthu...
+              Unoda virupam... 🥹😭💞✨
+            </p>
+            <p class="intro-highlight">
+              Rombaa naala kekanum nu thonuchii so keatutan. Thappa iruntha sryy da...
+              Love youuu endlessly... 🫂❤️😭🌎
+            </p>
+          </div>
+
+          <button id="go-to-commitment-btn" class="cta-btn" type="button">
+            Next ➡️
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 2.5 — HOPEFUL COMMITMENT
+    ═══════════════════════════════════════════════ -->
+    <div id="commitment-screen" class="screen-layer" style="display:none;">
+      <div class="intro-inner">
+        <div class="intro-card commitment-card">
+          <p class="intro-eyebrow">OUR NEW BEGINNING 🌸✨</p>
+          <h2 class="intro-title">Namma Pudhiya Arambam... ♾️</h2>
+
+          <div class="intro-body">
+            <p class="commitment-funny">
+              🍫 Chocolate unakku koduvaen - daily one piece!<br>
+              📋 Waiting list la irundhalum, first priority unga dhaan!<br>
+              👀 Sight adikka maaten - promise! Pinky promise! 💕
+            </p>
+
+            <div class="commitment-questions">
+              <p class="question-item">
+                <span class="q-number">1</span>
+                Enna senja othukkuva?
+              </p>
+              <p class="question-item">
+                <span class="q-number">2</span>
+                Inimel sanda panna maaten?
+              </p>
+              <p class="question-item">
+                <span class="q-number">3</span>
+                Namma relationship serious ah pudikuma?
+              </p>
+              <p class="question-item">
+                <span class="q-number">4</span>
+                Future la namma kooda iruka va?
+              </p>
+            </div>
+
+            <p class="commitment-closing">
+              Unkitta ithalam kekrathu enaku konjam kastamthan...<br>
+              Aanaalum un kitta than solla kudiyum...<br>
+              Nee en life la romba mukkiyam...<br>
+              So please, un answer sollu da... 🥺💖
+            </p>
+          </div>
+
+          <button id="go-to-deal-btn" class="cta-btn" type="button">
+            Deal Pannalam? 😉
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 2.75 — DEAL SCREEN
+    ═══════════════════════════════════════════════ -->
+    <div id="deal-screen" class="screen-layer" style="display:none;">
+      <div class="intro-inner">
+        <div class="intro-card deal-card">
+          <p class="intro-eyebrow">OUR LITTLE AGREEMENT 🤝✨</p>
+          <h2 class="intro-title">Oru Chinna Deal... 😉</h2>
+
+          <!-- Audio Player -->
+          <div class="deal-audio">
+            <audio id="deal-audio-player" src="assets/kathal_cricket.mp3" autoplay loop controls></audio>
+          </div>
+
+          <div class="intro-body">
+            <p class="deal-intro">
+              Unkulam manasaatchiye ilaya man?! Nanum ethanavati thaan unku propose panarathu..othukavea matra...over aa pandra da nee aana...irunthalum...
+            </p>
+
+            <p class="deal-main">
+              Enku una evlo pudikum nu unkum therium...unkuum ena pudikum nu enkum therium..ena solathan da matra..nee..irukatum irukatum pathukaran una...ok...namba evlo evlo sanda potalum..athaey alavuku bayangrama roast panipom nambalea...mukiyama nan ethavathu polmabum poguthuthan unku siripu varum neeum siripa nalla apo varum paaru enku kovam apdiye unku thokitu potu methikalam nu irukum..enku..Serii lv pandrana payana poitanu vituruvan...aprm ne feelings aa eathavthu sola varuva nanum sirichiruvan..epo na intha enku una pudikum like intha mari lam solum pothum nan hmmm nu soluvan nee kovapatu solavea matan d nu sollu..aprm apdiyea sirichitu ...vituruvom..again nan boys yaravathu pathi peasum pothu unku possive aagum..aprm ena verupatheney ne ethavathu sollu..intha maari nesrays iruku aprm una thambii..or bro nu solum pothu neum kova pattu sis nu soluva..again siripom..but intha 1 yr la sanda pothu kammi than..atha thandi namba fun aa jly aa irunthurukom...and i love this always...
+            </p>
+
+            <div class="deal-questions">
+              <p class="deal-question">
+                Enna Senja Othukuva..?
+              </p>
+              <p class="deal-question">
+                Enna Ne Eppo Eathukuvaaa..?
+              </p>
+            </div>
+          </div>
+
+          <button id="deal-to-memories-btn" class="cta-btn" type="button">
+            See Our Memories ✨
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 3 — MEMORIES PHOTO GRID
+    ═══════════════════════════════════════════════ -->
+    <div id="memories-screen" class="screen-layer memories-screen" style="display:none;">
+      <div class="memories-wrapper">
+        <div class="polaroid-grid">
+          
+          <div class="polaroid-card p-1">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/school_days.jpg" alt="School Days" />
+            </div>
+            <p class="polaroid-title">School Days 🎒✨</p>
+            <p class="polaroid-sub">Enga arambichathu nu nyabagam iruka...</p>
+          </div>
+
+          <div class="polaroid-card p-2">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/reconnect.jpg" alt="Reconnected" />
+            </div>
+            <p class="polaroid-title">Reconnected... 🥺💞</p>
+            <p class="polaroid-sub">Mupadiyum nama pesuna andha gold moments!</p>
+          </div>
+
+          <div class="polaroid-card p-3">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/our_days.jpeg" alt="Our Days" />
+            </div>
+            <p class="polaroid-title">Beautiful Days... ❤️</p>
+            <p class="polaroid-sub">Enakku romba pudicha oru safe comfort zone...</p>
+          </div>
+
+          <div class="polaroid-card p-4">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/special_day.jpeg" alt="Special Day" />
+            </div>
+            <p class="polaroid-title">Special Day ✨</p>
+            <p class="polaroid-sub">Indha naal eppavumea Enku nybkm iruku..you know already ..nan yen soldranu..</p>
+          </div>
+
+          <div class="polaroid-card p-5">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/unseen_pic.jpg" alt="Favorite Laugh" />
+            </div>
+            <p class="polaroid-title">Favorite Laugh 👑❤️</p>
+            <p class="polaroid-sub">Namba epavum ipude Sirichitea irukanum...jolly yaa.</p>
+          </div>
+
+          <div class="polaroid-card p-6">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/bond_accent.jpg" alt="Our Bond" />
+            </div>
+            <p class="polaroid-title">Our Bond... 🫂</p>
+            <p class="polaroid-sub">Ipude yea Irukanum epavum namba...</p>
+          </div>
+
+          <div class="polaroid-card p-7">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/holding_hands.jpeg" alt="Holding Hands" />
+            </div>
+            <p class="polaroid-title">Holding Hands 🔗❤️</p>
+            <p class="polaroid-sub">Kadaisi varaikum indha kaiya ipudeyea pudikanum...</p>
+          </div>
+
+          <div class="polaroid-card p-8">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/safe_place.jpeg" alt="Safe Place" />
+            </div>
+            <p class="polaroid-title">Safe Place 🏡✨</p>
+            <p class="polaroid-sub">Un kooda irukum podhu Enku oru Maari Jolly aa fun irukum..enku athu romba pudikum..</p>
+          </div>
+
+          <div class="polaroid-card p-9">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/together_forever.jpeg" alt="Forever" />
+            </div>
+            <p class="polaroid-title">Forever... ♾️</p>
+            <p class="polaroid-sub">Enna aanalum un kuda irupan..but enku thrla life epdii nu..pakkalam.....</p>
+          </div>
+
+          <div class="polaroid-card p-10">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/anniversary.jpeg" alt="Anniversary" />
+            </div>
+            <p class="polaroid-title">Our Milestone 📅💖</p>
+            <p class="polaroid-sub">Intha Memories Epavum Marakathu 2 du perukumea..</p>
+          </div>
+
+          <div class="polaroid-card p-11">
+            <div class="washi-tape"></div>
+            <div class="polaroid-photo-wrap">
+              <img src="assets/azahga_iruka_da.jpeg" alt="Azahga iruka da" />
+            </div>
+            <p class="polaroid-title">Azahga iruka da... 🥰</p>
+            <p class="polaroid-sub">Azhaga iruka ammu nee..Ena vida..intha pic paaru nalla..u remember that!</p>
+          </div>
+
+        </div><!-- /.polaroid-grid -->
+
+        <div class="memories-footer">
+          <button id="go-to-final-btn" class="cta-btn cta-btn--warm" type="button">
+            Our Forever Room ✨
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SCREEN 4 — GRAND FINALE
+    ═══════════════════════════════════════════════ -->
+    <div id="final-portrait-screen" class="screen-layer final-screen" style="display:none;">
+      <div class="final-wrapper">
+
+        <div class="portrait-glow-wrap">
+          <div class="portrait-glow-halo"></div>
+          <img
+            src="assets/fav_potrait.jpeg"
+            alt="My Favorite Portrait"
+            class="portrait-img"
+            onerror="this.onerror=null;this.src='assets/fav_potrait.jpg'"
+          />
+        </div>
+
+        <h2 class="romantic-finale-title">We Fight..We Stay..We fix..Forever.. ♾️❤️</h2>
+
+        <div class="finale-letter">
+          <p>
+            Ammu... 💖 enku yen intha pic avlo pudichirukunu thrla.. 🥺 ithuku paakum pothu oru maari nalla feel aa aguthu... and then may be namba intha maari pic eduthathy ila nu nenakirn like intha mari kaiya pudichitu... 🤝✨ literal aa 7 yrs achi neeum nanum peasa aaramichii... Still we are together.. ♾️❤️
+          </p>
+          <p>
+            Aana neajama ina varaikum enku onu thrla, unkuda irukum pothu matum epdii antha relationship yrs aa thandi poguthu nu sathiyama thrla enku.. 🤷‍♀️💕 athuku reason ne ya ila nan nu enku thrla, but whatever atlast only US... 🫂🌸 7 varusham pochu nu sonna sathyama namba mudiyala, Athukula evlo prachana..evlo Sanda..anniversary apavum sanda potom.avlo misunderstanding namakula...🌱
+          </p>
+          <p>
+            En manasula iruntha elathaum ithula solitan nan... ✍️🎈 indha screen-la irukura ovvoru single photo-vum nammaloada  memories dhaan.... 😊💖 Intha gift Unku pudikuma pudikathunu kuda enku theriyathu, enku unakaga eathavathu pannaum nu thonuchii so pandrn eatho enala mudicha oru chinna efforts..... 🎁💫 Once again Happy Birthday Ammu... 🎂🎉 love you and You are My Everything.... ♾️💝🔐
+          </p>
+        </div>
+
+        <div id="music-hint" role="status" style="display:none;">
+          <span>🎵 Play our song</span>
+          <button id="music-hint-btn" type="button">Play ▶</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="romantic-finale-track" src="assets/neeyum_naanum.mp3" loop></audio>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
