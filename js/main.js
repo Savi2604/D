@@ -14,6 +14,7 @@
   const lockScreen     = qs('#lock-screen');
   const introScreen    = qs('#intro-screen');
   const apologyScreen  = qs('#apology-screen');
+  const commitmentScreen = qs('#commitment-screen');
   const memoriesScreen = qs('#memories-screen');
   const finalScreen    = qs('#final-portrait-screen');
   
@@ -84,9 +85,9 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 3 — Memories Photo Grid (staggered slide-in)
+     SCREEN 2.5 — Hopeful Commitment Screen
   ═══════════════════════════════════════════════════════════════════ */
-  function showMemoriesScreen() {
+  function showCommitmentScreen() {
     /* Fade out apology screen */
     apologyScreen.style.opacity = '0';
     apologyScreen.style.transform = 'translateY(-18px)';
@@ -94,6 +95,23 @@
 
     window.setTimeout(() => {
       apologyScreen.style.display = 'none';
+
+      commitmentScreen.style.display = 'flex';
+      commitmentScreen.classList.add('screen-enter');
+    }, 500);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     SCREEN 3 — Memories Photo Grid (staggered slide-in)
+  ═══════════════════════════════════════════════════════════════════ */
+  function showMemoriesScreen() {
+    /* Fade out commitment screen */
+    commitmentScreen.style.opacity = '0';
+    commitmentScreen.style.transform = 'translateY(-18px)';
+    commitmentScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+    window.setTimeout(() => {
+      commitmentScreen.style.display = 'none';
 
       memoriesScreen.style.display = 'block';
       memoriesScreen.classList.add('screen-enter');
@@ -326,10 +344,16 @@
       goToApologyBtn.addEventListener('click', showApologyScreen);
     }
 
-    /* Screen 2 → Screen 3 (Memories Grid) */
-    const seeMemoriesBtn = qs('#see-memories-btn');
-    if (seeMemoriesBtn) {
-      seeMemoriesBtn.addEventListener('click', showMemoriesScreen);
+    /* Screen 2 → Screen 2.5 (Commitment) */
+    const goToCommitmentBtn = qs('#go-to-commitment-btn');
+    if (goToCommitmentBtn) {
+      goToCommitmentBtn.addEventListener('click', showCommitmentScreen);
+    }
+
+    /* Screen 2.5 → Screen 3 (Memories Grid) */
+    const goToMemoriesBtn = qs('#go-to-memories-btn');
+    if (goToMemoriesBtn) {
+      goToMemoriesBtn.addEventListener('click', showMemoriesScreen);
     }
 
     /* Screen 3 → Screen 4 (Final Portrait) */
