@@ -539,8 +539,8 @@ body {
 ═══════════════════════════════════════════════════════════════════════ */
 .final-screen {
   background:
-    radial-gradient(circle at 50% 0%, rgba(68, 18, 47, 0.45), transparent 50%),
-    linear-gradient(160deg, #2b0f30 0%, #44122f 50%, #1c0410 100%);
+    radial-gradient(circle at 50% 0%, rgba(255, 130, 160, 0.35), transparent 50%),
+    linear-gradient(160deg, #5c2a4a 0%, #7a3d5c 50%, #4a2540 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
