@@ -147,7 +147,8 @@
     cursorY = e.clientY;
   });
 
-  const ICON_POOL = ['🩷','🩷','🩷','🧡','🧡','🧡','🦋','🦋','✨','✨','🌸','💞'];
+  const ICON_POOL = ['💕','💕','💕','💗','💗','💗','💖','💖','💝','💝','💓','💞'];
+  const COLOR_POOL = ['#ff4d6d', '#ff85a2', '#ffb3c1', '#ffd166'];
 
   const GRAVITY       = -0.016;
   const DRAG          = 0.991;
