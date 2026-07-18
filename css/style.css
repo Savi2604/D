@@ -539,8 +539,9 @@ body {
 ═══════════════════════════════════════════════════════════════════════ */
 .final-screen {
   background:
-    radial-gradient(circle at 50% 0%, rgba(255, 130, 160, 0.35), transparent 50%),
-    linear-gradient(160deg, #5c2a4a 0%, #7a3d5c 50%, #4a2540 100%);
+    radial-gradient(circle at 50% 0%, rgba(255, 182, 193, 0.45), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 218, 185, 0.35), transparent 40%),
+    linear-gradient(160deg, #ffe4e9 0%, #fff0f5 50%, #ffeef2 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -625,27 +626,27 @@ body {
 
 /* ── Finale Letter ───────────────────────────────────────────── */
 .finale-letter {
-  background: rgba(32, 14, 36, 0.82);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 36px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 209, 220, 0.3);
+  border: 1px solid rgba(255, 182, 193, 0.5);
   max-width: 600px;
   margin: 25px auto;
   text-align: left;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 24px 60px rgba(255, 150, 180, 0.2);
 }
 
 .finale-letter p {
   font-family: 'Caveat', cursive;
   font-size: clamp(1.3rem, 3.2vw, 1.6rem);
   font-weight: 500;
-  color: #fff5f7;
+  color: #5a3a4a;
   line-height: 1.8;
   margin-bottom: 28px;
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: none;
 }
 
 .finale-letter p:last-child { margin-bottom: 0; }
