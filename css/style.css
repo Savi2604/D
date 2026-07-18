@@ -539,8 +539,8 @@ body {
 ═══════════════════════════════════════════════════════════════════════ */
 .final-screen {
   background:
-    radial-gradient(circle at 50% 0%, rgba(60, 30, 40, 0.35), transparent 50%),
-    linear-gradient(160deg, #0a070c 0%, #050406 100%);
+    radial-gradient(circle at 50% 0%, rgba(68, 18, 47, 0.45), transparent 50%),
+    linear-gradient(160deg, #2b0f30 0%, #44122f 50%, #1c0410 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -609,7 +609,7 @@ body {
   font-family: 'Dancing Script', cursive;
   font-size: clamp(2.6rem, 6.5vw, 4.2rem);
   font-weight: 700;
-  color: #ffb5a0;
+  color: #ffccd5;
   margin-bottom: 36px;
   letter-spacing: 0.04em;
   text-shadow:
@@ -625,12 +625,12 @@ body {
 
 /* ── Finale Letter ───────────────────────────────────────────── */
 .finale-letter {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(32, 14, 36, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 36px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 209, 220, 0.3);
   max-width: 600px;
   margin: 25px auto;
   text-align: left;
@@ -641,7 +641,7 @@ body {
   font-family: 'Caveat', cursive;
   font-size: clamp(1.3rem, 3.2vw, 1.6rem);
   font-weight: 500;
-  color: #ffffff;
+  color: #fff5f7;
   line-height: 1.8;
   margin-bottom: 28px;
   letter-spacing: 0.02em;
@@ -649,6 +649,16 @@ body {
 }
 
 .finale-letter p:last-child { margin-bottom: 0; }
+
+/* ── Text Highlights ───────────────────────────────────────────── */
+.highlight-text {
+  color: #ff85a2 !important;
+}
+
+.gold-highlight {
+  color: #ffd166 !important;
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.4);
+}
 
 /* ── Music Hint ──────────────────────────────────────────────── */
 #music-hint {
