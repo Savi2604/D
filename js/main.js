@@ -15,6 +15,7 @@
   const introScreen    = qs('#intro-screen');
   const apologyScreen  = qs('#apology-screen');
   const commitmentScreen = qs('#commitment-screen');
+  const dealScreen     = qs('#deal-screen');
   const memoriesScreen = qs('#memories-screen');
   const finalScreen    = qs('#final-portrait-screen');
   
@@ -102,9 +103,9 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 3 — Memories Photo Grid (staggered slide-in)
+     SCREEN 2.75 — Deal Screen
   ═══════════════════════════════════════════════════════════════════ */
-  function showMemoriesScreen() {
+  function showDealScreen() {
     /* Fade out commitment screen */
     commitmentScreen.style.opacity = '0';
     commitmentScreen.style.transform = 'translateY(-18px)';
@@ -112,6 +113,31 @@
 
     window.setTimeout(() => {
       commitmentScreen.style.display = 'none';
+
+      dealScreen.style.display = 'flex';
+      dealScreen.classList.add('screen-enter');
+
+      /* Start audio when deal screen loads */
+      const dealAudio = qs('#deal-audio-player');
+      if (dealAudio) {
+        dealAudio.play().catch(() => {
+          console.log('Autoplay blocked, user needs to interact first');
+        });
+      }
+    }, 500);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     SCREEN 3 — Memories Photo Grid (staggered slide-in)
+  ═══════════════════════════════════════════════════════════════════ */
+  function showMemoriesScreen() {
+    /* Fade out deal screen */
+    dealScreen.style.opacity = '0';
+    dealScreen.style.transform = 'translateY(-18px)';
+    dealScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+    window.setTimeout(() => {
+      dealScreen.style.display = 'none';
 
       memoriesScreen.style.display = 'block';
       memoriesScreen.classList.add('screen-enter');
@@ -350,10 +376,16 @@
       goToCommitmentBtn.addEventListener('click', showCommitmentScreen);
     }
 
-    /* Screen 2.5 → Screen 3 (Memories Grid) */
-    const goToMemoriesBtn = qs('#go-to-memories-btn');
-    if (goToMemoriesBtn) {
-      goToMemoriesBtn.addEventListener('click', showMemoriesScreen);
+    /* Screen 2.5 → Screen 2.75 (Deal) */
+    const goToDealBtn = qs('#go-to-deal-btn');
+    if (goToDealBtn) {
+      goToDealBtn.addEventListener('click', showDealScreen);
+    }
+
+    /* Screen 2.75 → Screen 3 (Memories Grid) */
+    const dealToMemoriesBtn = qs('#deal-to-memories-btn');
+    if (dealToMemoriesBtn) {
+      dealToMemoriesBtn.addEventListener('click', showMemoriesScreen);
     }
 
     /* Screen 3 → Screen 4 (Final Portrait) */

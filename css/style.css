@@ -471,6 +471,92 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   SCREEN 2.75 — DEAL SCREEN
+═══════════════════════════════════════════════════════════════════════ */
+#deal-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px 60px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 40% 30%, rgba(255, 218, 185, 0.4), transparent 45%),
+    radial-gradient(circle at 60% 70%, rgba(255, 182, 193, 0.35), transparent 45%),
+    linear-gradient(140deg, #fff9f0 0%, #fff5f7 50%, #fffef5 100%);
+}
+
+.deal-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 32px;
+  padding: 56px 52px;
+  box-shadow:
+    0 40px 80px rgba(255, 180, 150, 0.18),
+    0 0 0 1px rgba(255, 200, 180, 0.5);
+  text-align: center;
+}
+
+.deal-audio {
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 240, 230, 0.6), rgba(255, 245, 235, 0.4));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 200, 180, 0.4);
+}
+
+.deal-audio audio {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+}
+
+.deal-intro {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem;
+  color: #8b5a4a;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-style: italic;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 245, 235, 0.5), rgba(255, 250, 240, 0.3));
+  border-radius: 16px;
+  border-left: 4px solid rgba(255, 180, 150, 0.6);
+}
+
+.deal-main {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.25rem;
+  color: #6b4a4a;
+  line-height: 1.9;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.deal-questions {
+  margin-bottom: 0;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(255, 220, 210, 0.5), rgba(255, 230, 220, 0.3));
+  border-radius: 20px;
+  border: 2px solid rgba(255, 180, 160, 0.5);
+  box-shadow: 0 8px 24px rgba(255, 160, 140, 0.15);
+}
+
+.deal-question {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: #d46a6a;
+  line-height: 2.2;
+  margin-bottom: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.deal-question:last-child {
+  margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    SCREEN 3 — MEMORIES PHOTO GRID
 ═══════════════════════════════════════════════════════════════════════ */
 .memories-screen {
