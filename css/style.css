@@ -244,11 +244,13 @@ body {
 
 .intro-title {
   font-family: 'Dancing Script', cursive;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   color: #b85a50;
   margin-bottom: 32px;
   line-height: 1.3;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .intro-body {
@@ -754,6 +756,25 @@ body {
 .memories-footer {
   text-align: center;
   padding-top: 24px;
+}
+
+.gallery-footer-text {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 30px;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-style: italic;
+  color: #8b5a4a;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .gallery-footer-text {
+    margin-top: 30px;
+    padding-bottom: 25px;
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
