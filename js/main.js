@@ -14,7 +14,6 @@
   const lockScreen     = qs('#lock-screen');
   const introScreen    = qs('#intro-screen');
   const apologyScreen  = qs('#apology-screen');
-  const commitmentScreen = qs('#commitment-screen');
   const dealScreen     = qs('#deal-screen');
   const memoriesScreen = qs('#memories-screen');
   const finalScreen    = qs('#final-portrait-screen');
@@ -86,9 +85,9 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 2.5 — Hopeful Commitment Screen
+     SCREEN 2.5 — Deal Screen
   ═══════════════════════════════════════════════════════════════════ */
-  function showCommitmentScreen() {
+  function showDealScreen() {
     /* Fade out apology screen */
     apologyScreen.style.opacity = '0';
     apologyScreen.style.transform = 'translateY(-18px)';
@@ -97,31 +96,26 @@
     window.setTimeout(() => {
       apologyScreen.style.display = 'none';
 
-      commitmentScreen.style.display = 'flex';
-      commitmentScreen.classList.add('screen-enter');
-    }, 500);
-  }
-
-  /* ═══════════════════════════════════════════════════════════════════
-     SCREEN 2.75 — Deal Screen
-  ═══════════════════════════════════════════════════════════════════ */
-  function showDealScreen() {
-    /* Fade out commitment screen */
-    commitmentScreen.style.opacity = '0';
-    commitmentScreen.style.transform = 'translateY(-18px)';
-    commitmentScreen.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-    window.setTimeout(() => {
-      commitmentScreen.style.display = 'none';
-
       dealScreen.style.display = 'flex';
       dealScreen.classList.add('screen-enter');
 
-      /* Start audio when deal screen loads */
+      /* Start audio when deal screen loads - with click fallback */
       const dealAudio = qs('#deal-audio-player');
       if (dealAudio) {
-        dealAudio.play().catch(() => {
-          console.log('Autoplay blocked, user needs to interact first');
+        dealAudio.play().then(() => {
+          console.log('Audio started successfully');
+        }).catch(() => {
+          console.log('Autoplay blocked - will start on click');
+          // Add click listener to start audio on user interaction
+          const startAudioOnClick = () => {
+            dealAudio.play().then(() => {
+              console.log('Audio started on click');
+            }).catch(err => console.log('Audio play failed:', err));
+            document.body.removeEventListener('click', startAudioOnClick);
+            document.body.removeEventListener('touchstart', startAudioOnClick);
+          };
+          document.body.addEventListener('click', startAudioOnClick);
+          document.body.addEventListener('touchstart', startAudioOnClick);
         });
       }
     }, 500);
@@ -370,19 +364,13 @@
       goToApologyBtn.addEventListener('click', showApologyScreen);
     }
 
-    /* Screen 2 → Screen 2.5 (Commitment) */
-    const goToCommitmentBtn = qs('#go-to-commitment-btn');
-    if (goToCommitmentBtn) {
-      goToCommitmentBtn.addEventListener('click', showCommitmentScreen);
-    }
-
-    /* Screen 2.5 → Screen 2.75 (Deal) */
+    /* Screen 2 → Screen 2.5 (Deal) */
     const goToDealBtn = qs('#go-to-deal-btn');
     if (goToDealBtn) {
       goToDealBtn.addEventListener('click', showDealScreen);
     }
 
-    /* Screen 2.75 → Screen 3 (Memories Grid) */
+    /* Screen 2.5 → Screen 3 (Memories Grid) */
     const dealToMemoriesBtn = qs('#deal-to-memories-btn');
     if (dealToMemoriesBtn) {
       dealToMemoriesBtn.addEventListener('click', showMemoriesScreen);
