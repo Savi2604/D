@@ -777,6 +777,27 @@ body {
   }
 }
 
+/* ── Finale Footer ─────────────────────────────────────────── */
+.finale-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 40px;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-style: italic;
+  color: #b85a50;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .finale-footer {
+    margin-top: 40px;
+    padding-bottom: 35px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    SCREEN 4 — GRAND FINALE
 ═══════════════════════════════════════════════════════════════════════ */
