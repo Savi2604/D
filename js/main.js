@@ -87,6 +87,17 @@
   /* ═══════════════════════════════════════════════════════════════════
      SCREEN 2.5 — Deal Screen
   ═══════════════════════════════════════════════════════════════════ */
+  let dealAudio = null;
+  let audioOverlay = null;
+
+  function stopDealAudio() {
+    if (dealAudio) {
+      dealAudio.pause();
+      dealAudio.currentTime = 0;
+      console.log('Deal audio stopped');
+    }
+  }
+
   function showDealScreen() {
     /* Fade out apology screen */
     apologyScreen.style.opacity = '0';
@@ -99,32 +110,46 @@
       dealScreen.style.display = 'flex';
       dealScreen.classList.add('screen-enter');
 
-      /* Start audio when deal screen loads - with click fallback */
-      const dealAudio = qs('#deal-audio-player');
+      /* Get audio element */
+      dealAudio = qs('#deal-audio-player');
+      audioOverlay = qs('#deal-audio-overlay');
+
+      /* Try autoplay first */
       if (dealAudio) {
         dealAudio.play().then(() => {
           console.log('Audio started successfully');
+          if (audioOverlay) audioOverlay.style.display = 'none';
         }).catch(() => {
-          console.log('Autoplay blocked - will start on click');
-          // Add click listener to start audio on user interaction
-          const startAudioOnClick = () => {
-            dealAudio.play().then(() => {
-              console.log('Audio started on click');
-            }).catch(err => console.log('Audio play failed:', err));
-            document.body.removeEventListener('click', startAudioOnClick);
-            document.body.removeEventListener('touchstart', startAudioOnClick);
-          };
-          document.body.addEventListener('click', startAudioOnClick);
-          document.body.addEventListener('touchstart', startAudioOnClick);
+          console.log('Autoplay blocked - showing overlay');
+          /* Show play overlay */
+          if (audioOverlay) {
+            audioOverlay.style.display = 'flex';
+          }
         });
       }
     }, 500);
+  }
+
+  /* Play audio button handler */
+  const playDealAudioBtn = qs('#play-deal-audio-btn');
+  if (playDealAudioBtn) {
+    playDealAudioBtn.addEventListener('click', () => {
+      if (dealAudio) {
+        dealAudio.play().then(() => {
+          console.log('Audio started via button');
+          if (audioOverlay) audioOverlay.style.display = 'none';
+        }).catch(err => console.log('Audio play failed:', err));
+      }
+    });
   }
 
   /* ═══════════════════════════════════════════════════════════════════
      SCREEN 3 — Memories Photo Grid (staggered slide-in)
   ═══════════════════════════════════════════════════════════════════ */
   function showMemoriesScreen() {
+    /* Stop deal audio when leaving */
+    stopDealAudio();
+
     /* Fade out deal screen */
     dealScreen.style.opacity = '0';
     dealScreen.style.transform = 'translateY(-18px)';
